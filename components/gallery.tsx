@@ -9,55 +9,47 @@ export function Gallery() {
 
   const images = [
     {
-      src: "/galeri1.jpg",
-      alt: "Kegiatan belajar mengajar",
+      src: "/galeri/galeri12.jpg",
       className: "row-span-2",
     },
     {
-      src: "/galeri2.jpg",
-      alt: "Pemeriksaan kesehatan gratis",
+      src: "/galeri/galeri3.jpg",
       className: "col-span-1",
     },
     {
-      src: "/galeri3.jpg",
-      alt: "Pelatihan kewirausahaan",
+      src: "/galeri/galeri6.jpg",
       className: "col-span-1",
     },
     {
-      src: "/galeri4.jpg",
-      alt: "Distribusi bantuan",
+      src: "/galeri/galeri7.jpg",
       className: "row-span-2",
     },
     {
-      src: "/bumma1.jpg",
-      alt: "Kegiatan bermain anak",
+      src: "/galeri/galeri8.jpg",
       className: "col-span-1",
     },
     {
-      src: "/bumma2.jpg",
-      alt: "Layanan kesehatan lansia",
+      src: "/galeri/galeri9.jpg",
       className: "row-span-2",
     },
     {
-      src: "/bumma3.jpg",
-      alt: "Diskusi komunitas",
+      src: "/galeri/galeri21.jpg",
       className: "col-span-1",
     },
     {
-      src: "/bumma4.jpg",
-      alt: "Perpustakaan komunitas",
+      src: "/galeri/galeri23.jpg",
       className: "col-span-1",
     },
   ]
 
   return (
     <>
-      <section className="py-20 md:py-28 bg-background">
+      <section id="galeri" className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-balance">Gallery Kegiatan</h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
-              Momen nyata dari lapangan, bersama penerima manfaat dan relawan.
+              Momen nyata dari lapangan bersama masyarakat Papua
             </p>
           </div>
 
@@ -71,7 +63,7 @@ export function Gallery() {
               >
                 <img
                   src={image.src || "/placeholder.svg"}
-                  alt={image.alt}
+                  alt="kegiatan papua paradise center"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300" />
@@ -82,7 +74,7 @@ export function Gallery() {
           {/* CTA Button */}
           <div className="text-center">
             <Button
-              size="lg"
+               onClick={() => window.open('https://www.instagram.com/papua.paradisecenter/', '_blank')} size="lg"
               className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-lg font-semibold"
             >
               Lihat Lebih Banyak

@@ -1,35 +1,37 @@
-import { Users, MapPin, Heart, TrendingUp } from "lucide-react"
+import { Users, Lightbulb, Handshake, Leaf } from "lucide-react"
+
 
 export function Impact() {
   const stats = [
     {
       icon: Users,
       number: "15,000+",
-      label: "Penerima Manfaat",
-      description: "Individu yang telah terbantu",
+      label: "Anak Belajar Aktif",
+      description: "Anak-anak yang mengikuti Sekolah Alam Paradise.",
     },
     {
-      icon: MapPin,
-      number: "45",
-      label: "Desa Terbantu",
-      description: "Di seluruh Indonesia",
+      icon: Lightbulb,
+      number: "10",
+      label: "Bidang Belajar yang Ditekuni",
+      description: "Mulai dari bahasa, karakter, dan keterampilan kontekstual.",
     },
     {
-      icon: Heart,
+      icon: Handshake,
       number: "250+",
-      label: "Relawan Aktif",
-      description: "Berkomitmen untuk perubahan",
+      label: "Kelompok Dampingan",
+      description: "Kelompok lokal yang terberdayakan",
     },
     {
-      icon: TrendingUp,
-      number: "98%",
-      label: "Tingkat Keberhasilan",
-      description: "Program yang berkelanjutan",
+      icon: Leaf,
+      number: "15+",
+      label: "Produk Lokal Siap Jual",
+      description: "Dari noken, keripik, hingga atribut adat.",
     },
   ]
 
+
   return (
-    <section className="py-20 md:py-28 bg-secondary">
+    <section id="impact" className="py-20 md:py-28 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-balance">Dampak Nyata yang Kami Ciptakan</h2>

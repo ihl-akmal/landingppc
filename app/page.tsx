@@ -17,7 +17,7 @@ export default function Home() {
       <About />
       <Impact />
       <Programs />
-      <Stories />
+      {/* <Stories /> */}
       <Gallery />
       {/* <Partners /> */}
       <CTA />

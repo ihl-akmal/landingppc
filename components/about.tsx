@@ -23,8 +23,7 @@ export function About() {
                 </div>
                 <h3 className="text-2xl font-bold">Visi</h3>
               </div>
-              <p className="text-muted-foreground leading-relaxed">Terciptanya SDM Papua yang berkarakter, berperikemanusiaan, menghargai alam Papua, berecosociopreneur dan turut mengambil bagian dalam perekonomian dan kesejahteraan tanah Papua tanpa menghilangkan nilai-nilai Pancasila,
-                kebudayaan dan kearifan lokal.</p>
+              <p className="text-muted-foreground leading-relaxed">Mewujudkan Sumber Daya Manusia Papua yang Berkarakter, Berperikemanusiaan, Bersociopreneur, Cinta Alam dan Budaya dengan Spirit Filosofi Noken.</p>
             </div>
 
             <div>
@@ -37,15 +36,27 @@ export function About() {
               <ul className="space-y-4 text-muted-foreground leading-relaxed pl-16">
                 <li className="flex items-start">
                   <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span>Membangun sistem pendidikan khusus dengan metode tepat sasaran.</span>
+                  <span>Berkolaborasi dengan komunitas dan kelompok yang memiliki tujuan sama.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span>Menciptakan literasi budaya lokal</span>
+                  <span>Mendidik dan membinaa generasi emas Papua (anak usia dini), mengikuti pendidikan karakter, skill dan cinta lingkungan.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span>Membuka diri berkolaborasi dengan semua pihak yang dipandang sevisi misi untuk menciptakan SDM Papua yang mumpuni.</span>
+                  <span>Mengadvokasi dan mendampingi masyarakat adat untuk tetap memiliki prinsip hidup berkearifan lokal di tengah arus global.</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                  <span>Advokasi dan pendampingan ekonomi kerakyatan berbasis suku dan kelompok perempuan.</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                  <span>Menanamkan rasa cinta yang dalam kepada alam dan melestarikan budaya yang hampir punah.</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                  <span>Serta turut mendukung GEDSI</span>
                 </li>
               </ul>
             </div>
@@ -66,7 +77,7 @@ export function About() {
                 className="relative h-full overflow-hidden"
                 style={{ clipPath: "polygon(8% 0, 100% 0, 100% 92%, 0 100%, 0 8%)" }}
               >
-                <img src="/galeri5.jpg" alt="Founder PPC" className="w-full h-full object-cover" />
+                <img src="/galeri/galeri11.jpg" alt="Founder PPC" className="w-full h-full object-cover" />
               </div>
 
               {/* Modern floating text with green background */}

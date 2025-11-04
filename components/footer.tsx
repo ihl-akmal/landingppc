@@ -53,30 +53,26 @@ export function Footer() {
             <h4 className="text-xl font-semibold mb-4">Tautan Cepat</h4>
             <ul className="space-y-2 text-background/80">
               <li>
-                <a href="#about" className="hover:text-background transition-colors">
+                <a href="/#about" className="hover:text-background transition-colors">
                   Tentang Kami
                 </a>
               </li>
               <li>
-                <a href="#programs" className="hover:text-background transition-colors">
+                <a href="/#impact" className="hover:text-background transition-colors">
+                  Impact
+                </a>
+              </li>
+              <li>
+                <a href="/#program" className="hover:text-background transition-colors">
                   Program
                 </a>
               </li>
               <li>
-                <a href="#impact" className="hover:text-background transition-colors">
-                  Dampak
+                <a href="/#galeri" className="hover:text-background transition-colors">
+                  Galeri Kegiatan
                 </a>
               </li>
-              <li>
-                <a href="#stories" className="hover:text-background transition-colors">
-                  Kisah
-                </a>
-              </li>
-              <li>
-                <a href="#partners" className="hover:text-background transition-colors">
-                  Partner
-                </a>
-              </li>
+              
             </ul>
           </div>
 
@@ -85,7 +81,7 @@ export function Footer() {
             <h4 className="text-xl font-semibold mb-4">Ikuti Kami</h4>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.facebook.com/papua.paradise.39/" target="_blank"
                 className="w-10 h-10 bg-background/10 hover:bg-background/20 flex items-center justify-center transition-colors"
               >
                 <Facebook className="h-5 w-5" />
@@ -105,13 +101,7 @@ export function Footer() {
                 <Youtube className="h-5 w-5" />
                 <span className="sr-only">Youtube</span>
               </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-background/10 hover:bg-background/20 flex items-center justify-center transition-colors"
-              >
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </a>
+              
             </div>
           </div>
         </div>
