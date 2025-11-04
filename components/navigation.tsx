@@ -77,10 +77,12 @@ export function Navigation() {
             )}
           </Button>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-4 bg-background border-t">
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-background border-t">
+          <div className="container mx-auto px-4 py-4">
             <div className="flex flex-col gap-4">
               <Link
                 href="/"
@@ -105,8 +107,8 @@ export function Navigation() {
               </Link>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </nav>
   )
 }

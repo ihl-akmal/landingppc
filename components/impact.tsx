@@ -36,7 +36,7 @@ export function Impact() {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-balance">Dampak Nyata yang Kami Ciptakan</h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
-            Setiap kontribusi Anda menciptakan perubahan yang terukur dan berkelanjutan
+            Kami mengubah niat baik menjadi hasil yang dapat dilihat dan diukur.
           </p>
         </div>
 
