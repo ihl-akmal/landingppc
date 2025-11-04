@@ -57,7 +57,7 @@ export const programsData: Program[] = [
   {
         slug: "ekonomi-kerakyatan",
         icon: GraduationCap,
-        title: "Ekonomi Keraykatan",
+        title: "Ekonomi Kerakyatan",
         shortDescription:
         "Mendampingi komunitas lokal mengembangkan produk kreatif berbasis budaya dan warisan leluhur, mulai dari noken hingga VCO dan keripik. Dengan dukungan kami, usaha mereka bisa bertumbuh sambil menjaga identitas dan kearifan lokal",
         heroDescription: "Memberdayakan generasi melalui akses pendidikan berkualitas",
