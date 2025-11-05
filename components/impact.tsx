@@ -5,25 +5,25 @@ export function Impact() {
   const stats = [
     {
       icon: Users,
-      number: "15,000+",
+      number: "132",
       label: "Anak Belajar Aktif",
       description: "Anak-anak yang mengikuti Sekolah Alam Paradise.",
     },
     {
       icon: Lightbulb,
-      number: "10",
+      number: "5",
       label: "Bidang Belajar yang Ditekuni",
-      description: "Mulai dari bahasa, karakter, dan keterampilan kontekstual.",
+      description: "Mulai dari bahasa, karakter, ecosociopreneur, anti korupsi, olahraga",
     },
     {
       icon: Handshake,
-      number: "250+",
+      number: "4",
       label: "Kelompok Dampingan",
       description: "Kelompok lokal yang terberdayakan",
     },
     {
       icon: Leaf,
-      number: "15+",
+      number: "14",
       label: "Produk Lokal Siap Jual",
       description: "Dari noken, keripik, hingga atribut adat.",
     },

@@ -45,12 +45,12 @@ export function Programs() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {programsData.map((program, index) => (
             <div key={index} className="bg-background overflow-hidden group flex flex-col h-full">
               <div className="relative h-48 overflow-hidden">
                 <img
-                  src={program.galleryImages[0]?.src || "/placeholder.svg"}
+                  src={program.heroImage || "/placeholder.svg"}
                   alt={program.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />

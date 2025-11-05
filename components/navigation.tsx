@@ -2,13 +2,17 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ChevronDown, ChevronUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { programsData } from "@/lib/program-data"
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isProgramsOpen, setIsProgramsOpen] = useState(false) // mobile submenu toggle
+  const [isDesktopProgramsOpen, setIsDesktopProgramsOpen] = useState(false) // desktop dropdown state
+  const [desktopDropdownTimeout, setDesktopDropdownTimeout] = useState<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,22 +49,48 @@ export function Navigation() {
             >
               Home
             </Link>
-            <Link
-              href="/#about"
-              className={`font-medium hover:text-primary transition-colors ${
-                isScrolled ? "text-foreground" : "text-background"
-              }`}
+            {/* dropdown Program (desktop) */}
+            <div
+              className="relative"
+              onMouseEnter={() => {
+    if (desktopDropdownTimeout) clearTimeout(desktopDropdownTimeout)
+    setIsDesktopProgramsOpen(true)
+  }}
+  onMouseLeave={() => {
+    const timeout = setTimeout(() => setIsDesktopProgramsOpen(false), 150)
+    setDesktopDropdownTimeout(timeout)
+  }}
             >
-              About Us
-            </Link>
-            <Link
-              href="/#program"
-              className={`font-medium hover:text-primary transition-colors ${
-                isScrolled ? "text-foreground" : "text-background"
-              }`}
-            >
-              Program
-            </Link>
+              <button
+                type="button"
+                onClick={() => setIsDesktopProgramsOpen((s) => !s)}
+                className={`font-medium transition-colors inline-flex items-center gap-2 ${
+                  isScrolled ? "text-foreground" : "text-background"
+                }`}
+              >
+                Program
+                <ChevronDown className="h-4 w-4" />
+              </button>
+              {/* Dropdown harus tetap di dalam parent ini */}
+              <div
+                className={`absolute left-0 top-full mt-1 w-48 bg-card border rounded-md shadow-lg z-50 transition-opacity ${
+                  isDesktopProgramsOpen ? "opacity-100 visible" : "opacity-0 invisible"
+                }`}
+              >
+                <div className="py-2">
+                  {programsData.map((program) => (
+                    <Link
+                      key={program.id}
+                      href={`/program/${program.slug}`}
+                      className="block px-4 py-2 text-sm hover:bg-muted/60"
+                      onClick={() => setIsDesktopProgramsOpen(false)}
+                    >
+                      {program.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -91,20 +121,33 @@ export function Navigation() {
               >
                 Home
               </Link>
-              <Link
-                href="/#about"
-                className="text-left font-medium hover:text-primary transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                About Us
-              </Link>
-              <Link
-                href="/#program"
-                className="text-left font-medium hover:text-primary transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Program
-              </Link>
+              {/* mobile: Program with toggle to show submenu */}
+              <div>
+                <button
+                  className="w-full flex items-center justify-between font-medium hover:text-primary transition-colors py-2"
+                  onClick={() => setIsProgramsOpen((s) => !s)}
+                >
+                  <span>Program</span>
+                  {isProgramsOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                </button>
+                {isProgramsOpen && (
+                  <div className="mt-2 ml-4 flex flex-col gap-1">
+                    {programsData.map((program) => (
+                      <Link
+                        key={program.id}
+                        href={`/program/${program.slug}`}
+                        className="text-left text-sm hover:text-primary transition-colors py-1"
+                        onClick={() => {
+                          setIsMobileMenuOpen(false)
+                          setIsProgramsOpen(false)
+                        }}
+                      >
+                        {program.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

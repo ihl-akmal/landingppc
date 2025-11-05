@@ -1,6 +1,3 @@
-import type React from "react"
-import { Award, Users, BookOpen, Heart, Zap, Lightbulb } from "lucide-react"
-
 interface Benefit {
   title: string
   description: string
@@ -10,40 +7,36 @@ interface BenefitsProps {
   benefits: Benefit[]
 }
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Award,
-  Users,
-  BookOpen,
-  Heart,
-  Zap,
-  Lightbulb,
-}
-
 export function Benefits({ benefits }: BenefitsProps) {
   return (
-    <section className="py-20 md:py-28 bg-secondary">
+    <section className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-balance">Manfaat Program</h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
-            Kami menyediakan berbagai dukungan komprehensif untuk memastikan dampak maksimal
-          </p>
-        </div>
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">Manfaat yang Mereka Rasakan</h2>
+            <p className="text-lg leading-relaxed">
+              Menginspirasi perubahan positif dalam kehidupan mereka
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          {benefits.map((benefit, index) => {
-            const Icon = iconMap[Object.keys(iconMap)[index % Object.keys(iconMap).length]]
-            return (
-              <div key={index} className="bg-background p-8">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary mb-6">
-                  <Icon className="h-8 w-8 text-primary-foreground" />
+          <div className="space-y-8">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="grid grid-cols-12 gap-3 items-start">
+                <div className="col-span-1 text-2xl md:text-3xl font-bold flex-shrink-0 pr-2">
+                  {index + 1}.
                 </div>
-                <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
-                <p className="text-muted-foreground">{benefit.description}</p>
+                <div className="col-span-11 md:col-span-11">
+                  <h3 className="text-xl md:text-2xl font-bold pt-1">{benefit.title}</h3>
+                  <p className="text-base text-muted-foreground leading-relaxed mt-2">
+                    {benefit.description}
+                  </p>
+                </div>
               </div>
-            )
-          })}
+            ))}
+          </div>
+          <div className="border-b border-border mt-16" />
         </div>
+        
       </div>
     </section>
   )
