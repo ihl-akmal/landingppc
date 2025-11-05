@@ -19,28 +19,30 @@ export function Gallery({ images }: GalleryProps) {
     <>
       <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-balance">Dokumentasi Program</h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
-              Momen-momen berharga dari kegiatan kami di lapangan
-            </p>
-          </div>
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-2">Dokumentasi Program</h2>
+              <p className="text-lg text-muted-foreground">Momen-momen berharga dari kegiatan kami di lapangan</p>
+            </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
-            {images.map((image, index) => (
-              <div
-                key={index}
-                className="relative overflow-hidden group cursor-pointer aspect-square"
-                onClick={() => setSelectedImage(image.src)}
-              >
-                <img
-                  src={image.src || "/placeholder.svg"}
-                  alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300" />
-              </div>
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {images.slice(0, 3).map((image, index) => (
+                <div key={index} className="space-y-4">
+                  <div
+                    className="relative overflow-hidden group cursor-pointer aspect-square w-full"
+                    onClick={() => setSelectedImage(image.src)}
+                  >
+                    <img
+                      src={image.src || "/placeholder.svg"}
+                      alt={image.alt}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300" />
+                  </div>
+                  {/* <p className="text-base font-medium text-foreground text-center">{image.alt}</p> */}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
