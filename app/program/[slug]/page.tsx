@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: `${program.title} | Papua Paradise Center`,
     description: program.shortDescription ?? program.heroDescription?.slice(0, 160) ?? "Deskripsi program.",
+    
   }
 }
 

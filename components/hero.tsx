@@ -2,16 +2,18 @@
 
 import { Button } from "@/components/ui/button";
 import { Heart, Users } from "lucide-react";
+import Image from "next/image";
+
 
 export function Hero() {
   return (
     <section id="home" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src="/galeri/galeri21.jpg"
           alt="tentang papua paradise center"
-          className="w-full h-full object-cover"
+          fill className="object-cover"
         />
         <div className="absolute inset-0 bg-foreground/60" />
       </div>

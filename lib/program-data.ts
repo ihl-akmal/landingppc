@@ -44,6 +44,8 @@ export type DetailedProgram = {
     src: string
     alt: string
   }[]
+  updatedAt?: string
+
 }
 
 export const programsData: DetailedProgram[] = [

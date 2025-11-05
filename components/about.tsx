@@ -1,4 +1,5 @@
 import { Target, Eye } from "lucide-react"
+import Image from "next/image";
 
 export function About() {
   return (
@@ -77,7 +78,7 @@ export function About() {
                 className="relative h-full overflow-hidden"
                 style={{ clipPath: "polygon(8% 0, 100% 0, 100% 92%, 0 100%, 0 8%)" }}
               >
-                <img src="/galeri/galeri11.jpg" alt="Founder PPC" className="w-full h-full object-cover" />
+                <Image src="/galeri/galeri11.jpg" alt="Founder PPC" fill className="object-cover"/>
               </div>
 
               {/* Modern floating text with green background */}
