@@ -17,7 +17,7 @@ export function Gallery({ images }: GalleryProps) {
 
   return (
     <>
-      <section className="py-20 md:py-28 bg-background">
+      <section className="py-5 md:py-28 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="mb-16">
