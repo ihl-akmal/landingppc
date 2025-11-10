@@ -17,7 +17,7 @@ export function Footer() {
             <Image src="/logo-ppc.svg" alt="Logo Papua Paradise Center" width={250} height={250} className="h-16 w-16" />
           </Link>
             <p className="text-background/80 leading-relaxed mb-6">
-              Papua Paradise Center adalah organisasi nirlaba yang berfokus memberdayakan masyarakat Papua melalui program pendidikan, kesehatan, dan pembangunan berkelanjutan.
+              Papua Paradise Center adalah organisasi nirlaba yang berfokus memberdayakan masyarakat Papua melalui program pendidikan, ekonomi kerakyatan, dan pembangunan berkelanjutan.
             </p>
           </div>
 
