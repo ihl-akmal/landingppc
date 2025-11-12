@@ -63,7 +63,7 @@ export default function RootLayout({
       <head>
        
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -86,7 +86,7 @@ export default function RootLayout({
             "logo": "https://papuaparadisecenter.org/logo.png"
           })}
         </Script>
-        <meta name="google-site-verification" content="PIiSyBSZikwO9mDXqLz8V0Z0PTzYv2UUmDReMhfR8Ps" />
+        <meta name="google-site-verification" content="9FFL4xvCHLB8UkHjA0BZ3IuDXI_ljraZ1DoffoeKqUQ" />
       </head>
       <body className={`font-sans antialiased ${GeistSans.variable} ${GeistMono.variable}`}>
         {children}
