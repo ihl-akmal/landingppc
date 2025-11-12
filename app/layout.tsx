@@ -6,6 +6,9 @@ import './globals.css'
 import Script from 'next/script'
 import { GA_ID } from "@/lib/gtag"
 
+
+
+
 export const metadata: Metadata = {
   title: 'Papua Paradise Center',
   description: 'Papua Paradise Center adalah organisasi nirlaba yang berfokus memberdayakan masyarakat Papua melalui program pendidikan, ekonomi kerakyatan, dan pembangunan berkelanjutan.',
@@ -54,15 +57,18 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
+  
   children,
 }: Readonly<{
   children: React.ReactNode
-}>) {
+}>)
+{
+  
    return (
     <html lang="en">
       <head>
        
-        <Script
+        <Script async
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"
         />
