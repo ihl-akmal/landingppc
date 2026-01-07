@@ -1,0 +1,50 @@
+{
+  "hero": {
+    "imageAlt": "Papua Paradise Center",
+    "title": "Papua Paradise Center",
+    "subtitle": "Protecting indigenous land, empowering communities.",
+    "cta": "View Our Programs"
+  },
+  "about": {
+    "AboutTitle": "About Us",
+    "visionTitle": "Vision",
+    "visionText": "Mewujudkan Sumber Daya Manusia Papua yang Berkarakter, Berperikemanusiaan, Bersociopreneur, Cinta Alam dan Budaya dengan Spirit Filosofi Noken.",
+    "missionTitle": "Mission",
+    "missionList": [
+      "Berkolaborasi dengan komunitas dan kelompok yang memiliki tujuan sama.",
+      "Mendidik dan membinaa generasi emas Papua (anak usia dini), mengikuti pendidikan karakter, skill dan cinta lingkungan.",
+      "Mengadvokasi dan mendampingi masyarakat adat untuk tetap memiliki prinsip hidup berkearifan lokal di tengah arus global.",
+      "Advokasi dan pendampingan ekonomi kerakyatan berbasis suku dan kelompok perempuan.",
+      "Menanamkan rasa cinta yang dalam kepada alam dan melestarikan budaya yang hampir punah.",
+      "Serta turut mendukung GEDSI"
+    ] 
+  },
+  "impact": {
+    "ImpactTitle": "Our Impact",
+    "ImpactSubtitle": "Kami mengubah niat baik menjadi hasil yang dapat dilihat dan diukur.",
+    "ImpactStats": [
+      {
+        "number": "132",
+        "label": "Anak Belajar Aktif",
+        "description": "Anak-anak yang mengikuti Sekolah Alam Paradise."
+      },
+      {
+        "number": "5",
+        "label": "Bidang Belajar yang Ditekuni",
+        "description": "Mulai dari bahasa, karakter, ecosociopreneur, anti korupsi, olahraga"
+      },
+      {
+        "number": "4",
+        "label": "Kelompok Dampingan",
+        "description": "Kelompok lokal yang terberdayakan"
+      },
+      {
+        "number": "14",
+        "label": "Produk Lokal Siap Jual",
+        "description": "Dari noken, keripik, hingga atribut adat."
+      }
+    ]
+  }
+  
+}
+

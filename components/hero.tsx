@@ -1,18 +1,27 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Heart, Users } from "lucide-react";
+import { Heart } from "lucide-react";
 import Image from "next/image";
 
+type HeroDict = {
+  imageAlt: string;
+  title: string;
+  subtitle: string;
+  cta: string;
+};
 
-export function Hero() {
+
+export function Hero({ dict }: { dict: HeroDict }) {
+  
+
   return (
     <section id="home" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/galeri/galeri21.jpg"
-          alt="tentang papua paradise center"
+          alt={dict.imageAlt}
           fill className="object-cover"
         />
         <div className="absolute inset-0 bg-foreground/60" />
@@ -21,10 +30,10 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-background pt-20">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance">
-          Perkumpulan Papua Paradise Center
+          {dict.title}
         </h1>
         <p className="text-lg md:text-xl lg:text-2xl mb-10 max-w-3xl mx-auto text-pretty opacity-95">
-          Tanah adat terjaga, masyarakat adat sejahtera.
+          {dict.subtitle}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button
@@ -35,7 +44,7 @@ export function Hero() {
             }}
           >
             <Heart className="mr-2 h-5 w-5" />
-            Lihat Program Kami
+            {dict.cta}
           </Button>
           {/* <Button
             size="lg"
@@ -48,5 +57,7 @@ export function Hero() {
         </div>
       </div>
     </section>
+    
   );
+  
 }
