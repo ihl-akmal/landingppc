@@ -11,6 +11,35 @@ import { notFound } from "next/navigation"
 import { getDictionary } from "@/lib/dictionaries"
 import { i18n, type Locale } from "@/i18n-config"
 
+// Definisi tipe data sesuai struktur di program-details.json (seperti HeroDict di hero.tsx)
+type ProgramDetailDict = {
+  hero: {
+    title: string;
+    category: string;
+    description: string;
+  };
+  background: {
+    title: string;
+    content: string;
+  };
+  activity: {
+    title: string;
+    description: string;
+  };
+  benefits: {
+    title: string;
+    subtitle: string;
+    items: {
+      title: string;
+      description: string;
+    }[];
+  };
+  gallery: {
+    title: string;
+    description: string;
+  };
+}
+
 export async function generateStaticParams() {
   return programsData.flatMap((program) => 
     i18n.locales.map((locale) => ({
@@ -24,17 +53,18 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string; lang: Locale } }) {
   const program = getProgramBySlug(params.slug)
   const dict = await getDictionary(params.lang)
+  // Mengakses data dengan aman menggunakan key slug
+  const programText = dict.programDetails[params.slug as keyof typeof dict.programDetails] as ProgramDetailDict | undefined
 
-  if (!program) {
+  if (!program || !programText) {
     return {
-      title: dict.common.notFoundTitle,
-      description: dict.common.notFoundDesc,
+      title: "Program Not Found",
     }
   }
 
   return {
-    title: `${program.title} | Papua Paradise Center`,
-    description: program.shortDescription ?? program.heroDescription?.slice(0, 160) ?? "Deskripsi program.",
+    title: `${programText.hero.title} | Papua Paradise Center`,
+    description: programText.hero.description.slice(0, 160),
     
   }
 }
@@ -42,9 +72,10 @@ export async function generateMetadata({ params }: { params: { slug: string; lan
 
 export default async function ProgramDetailPage({ params }: { params: { slug: string; lang: Locale } }) {
   const program = getProgramBySlug(params.slug)
-  // const dict = await getDictionary(params.lang) // Use this for UI translations
+  const dict = await getDictionary(params.lang)
+  const programText = dict.programDetails[params.slug as keyof typeof dict.programDetails] as ProgramDetailDict | undefined
 
-  if (!program) {
+  if (!program || !programText) {
     notFound()
   }
 
@@ -52,17 +83,22 @@ export default async function ProgramDetailPage({ params }: { params: { slug: st
     <main className="min-h-screen">
       <Navigation />
       <ProgramHero
-        title={program.title}
-        category={program.category}
-        description={program.heroDescription}
+        title={programText.hero.title}
+        category={programText.hero.category}
+        description={programText.hero.description}
         backgroundImage={program.heroImage}
       />
-      <Background title={program.backgroundTitle} content={program.backgroundContent} />
-      <Activity title={program.activityTitle} description={program.activityDescription} image={program.activityImage} />
-      <Benefits benefits={program.benefits} />
-      <Gallery images={program.galleryImages} />
-      <CTA />
-      <Footer />
+      <Background title={programText.background.title} content={programText.background.content} />
+      <Activity title={programText.activity.title} description={programText.activity.description} image={program.activityImage} />
+      <Benefits title={programText.benefits.title} subtitle={programText.benefits.subtitle} items={programText.benefits.items} />
+      {/* Gallery component might need refactoring to accept title/desc from dict if needed, currently passing images only */}
+      <Gallery 
+        title={programText.gallery.title}
+        description= {programText.gallery.description}
+        images={program.galleryImages}
+      /> 
+      <CTA dict={dict.cta} />
+      <Footer dict={dict.footer} />
     </main>
   )
 }

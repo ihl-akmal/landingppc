@@ -4,52 +4,62 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { X } from "lucide-react"
 
-export function Gallery() {
+type GalleryDict = {
+    title: string;
+    subtitle: string;
+    cta: string;
+    imageAlt: string;
+  }
+
+export function Gallery({ dict }: { dict: GalleryDict }) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
   const images = [
     {
-      src: "/galeri/galeri12.jpg",
+      src: `${basePath}/galeri/galeri12.jpg`,
       className: "row-span-2",
     },
     {
-      src: "/galeri/galeri3.jpg",
+      src: `${basePath}/galeri/galeri3.jpg`,
       className: "col-span-1",
     },
     {
-      src: "/galeri/galeri6.jpg",
+      src: `${basePath}/galeri/galeri6.jpg`,
       className: "col-span-1",
     },
     {
-      src: "/galeri/galeri7.jpg",
+      src: `${basePath}/galeri/galeri7.jpg`,
       className: "row-span-2",
     },
     {
-      src: "/galeri/galeri8.jpg",
+      src: `${basePath}/galeri/galeri8.jpg`,
       className: "col-span-1",
     },
     {
-      src: "/galeri/galeri9.jpg",
+      src: `${basePath}/galeri/galeri9.jpg`,
       className: "row-span-2",
     },
     {
-      src: "/galeri/galeri21.jpg",
+      src: `${basePath}/galeri/galeri21.jpg`,
       className: "col-span-1",
     },
     {
-      src: "/galeri/galeri23.jpg",
+      src: `${basePath}/galeri/galeri23.jpg`,
       className: "col-span-1",
     },
   ]
+
+  
 
   return (
     <>
       <section id="galeri" className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-balance">Gallery Kegiatan</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-balance">{dict.title}</h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
-              Momen nyata dari lapangan bersama masyarakat Papua
+              {dict.subtitle}
             </p>
           </div>
 
@@ -63,7 +73,7 @@ export function Gallery() {
               >
                 <img
                   src={image.src || "/placeholder.svg"}
-                  alt="kegiatan papua paradise center"
+                  alt={dict.imageAlt}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300" />
@@ -77,7 +87,7 @@ export function Gallery() {
                onClick={() => window.open('https://www.instagram.com/papua.paradisecenter/', '_blank')} size="lg"
               className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-lg font-semibold"
             >
-              Lihat Lebih Banyak
+              {dict.cta}
             </Button>
           </div>
         </div>

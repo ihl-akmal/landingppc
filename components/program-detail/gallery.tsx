@@ -9,10 +9,13 @@ interface GalleryImage {
 }
 
 interface GalleryProps {
+  title: string
+  description: string
   images: GalleryImage[]
+  
 }
 
-export function Gallery({ images }: GalleryProps) {
+export function Gallery({ title, description,images }: GalleryProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
   return (
@@ -21,8 +24,8 @@ export function Gallery({ images }: GalleryProps) {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-2">Dokumentasi Program</h2>
-              <p className="text-lg text-muted-foreground">Momen-momen berharga dari kegiatan kami di lapangan</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-2">{title}</h2>
+              <p className="text-lg text-muted-foreground">{description}</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

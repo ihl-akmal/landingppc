@@ -1,0 +1,113 @@
+{
+  "pendidikan-kontekstual": {
+    "hero": {
+      "title": "Contextual Education",
+      "category": "Education",
+      "description": "Building character and skills of Papuan children through nature and cultural approaches."
+    },
+    "background": {
+      "title": "Background",
+      "content": "Many children in remote areas have not received access to education that suits their environmental needs..."
+    },
+    "activity": {
+      "title": "Main Activities",
+      "description": "Learning in the open nature, introduction to flora and fauna, and inspiration classes."
+    },
+    "benefits": {
+      "title": "Benefits They Experience",
+      "subtitle": "Inspiring positive change in their lives",
+      "items": [
+        {
+          "title": "Improving basic literacy",
+          "description": "Reading, writing, and arithmetic skills are strengthened through relevant methods."
+        },
+        {
+          "title": "Building nature-loving character",
+          "description": "Instilling early awareness to protect and preserve nature."
+        },
+        {
+          "title": "Preserving local culture",
+          "description": "Reintroducing noble values and ancestral traditions to the younger generation."
+        }
+      ]
+    },
+    "gallery": {
+      "title": "Documentation",
+      "description": "Photos of teaching and learning activities in nature."
+    }
+  },
+  "ekonomi-kerakyatan": {
+    "hero": {
+      "title": "Economy",
+      "category": "Program",
+      "description": "Memberdayakan komunitas lokal papua untuk produktif."
+    },
+    "background": {
+      "title": "Memajukan Ekonomi Papua untuk Kehidupan Lebih Baik",
+      "content": "Mendampingi komunitas lokal mengembangkan produk kreatif berbasis budaya dan warisan leluhur, mulai dari noken hingga VCO dan keripik. Dengan dukungan kami, usaha mereka bisa bertumbuh sambil menjaga identitas dan kearifan lokal."
+    },
+    "activity": {
+      "title": "Kegiatan Program",
+      "description": "Kami mendampingi kelompok masyarakat yang menggerakkan ekonomi lokal berbasis budaya. Kelompok Yekinto di Kampung Yanggandur membuat atribut budaya untuk menjaga warisan leluhur. Kelompok Yu Mbu Tar Ta di Kampung Onggaya memproduksi VCO, terasi, abon, keripik, dan hiasan adat sebagai wujud kewirausahaan berbasis tradisi. Kelompok Katin Sai di Gudang Arang, Merauke, beranggotakan ibu-ibu perajin noken yang menguatkan ekonomi keluarga melalui karya dan ketekunan."
+    },
+    "benefits": {
+      "title": "Manfaat yang Mereka Rasakan",
+      "subtitle": "Menginspirasi perubahan positif dalam kehidupan mereka",
+      "items": [
+        {
+          "title": "Kemandirian Ekonomi Berbasis Lokal",
+          "description": "Masyarakat belajar mengelola potensi alam dan budaya di sekitarnya untuk menciptakan sumber penghasilan yang berkelanjutan."
+        },
+        {
+          "title": "Pelestarian Warisan & Budaya",
+          "description": "Melalui produk seperti noken dan atribut adat, tradisi turun-temurun tetap hidup dan diwariskan kepada generasi muda."
+        },
+        {
+          "title": "Kolaborasi dan Solidaritas Komunitas",
+          "description": "Setiap kelompok tumbuh melalui kerja sama, saling dukung, dan berbagi pengetahuan antaranggota komunitas."
+        }
+      ]
+    },
+    "gallery": {
+      "title": "Documentation",
+      "description": "Photos of teaching and learning activities in nature."
+    }
+  },
+  "hutan-adat-lingkungan": { 
+    "hero": {
+      "title": "Forest",
+      "category": "Program",
+      "description": "Mendukung masyarakat adat menjaga hutan dan menghidupkan lingkungannya."
+    },
+    "background": {
+      "title": "Menjaga Alam, Menjaga Rumah Kita di Tanah Papua",
+      "content": "Bersama masyarakat adat memetakan wilayah hutan, menjaga ekosistem, dan mengubah sampah plastik menjadi EcoBrick untuk furnitur, menanam mangrove, serta bersih-bersih lingkungan guna menjaga lingkungan tetap lestari."
+    },
+    "activity": {
+      "title": "Kegiatan Program",
+      "description": "Kami membantu masyarakat adat menjaga hutan adat mereka dengan melakukan pemetaan wilayah adat di dua suku, yaitu Suku Kanum dan Suku Marori, untuk menjaga lingkungan kami juga mengolah sampah plastik berupa botol menjadi EcoBrick (Bata Plastik) sementara dikumpulkan untuk di olah menjadi kursi, meja dll. Kami juga sering melakukan aksi pembersihan sampah dan melakukan penanaman pohon mangrove di lahan-lahan kritis yang bisa mengakibatkan banjir di sekitar Gudang Arang, Merauke, Papua Selatan."
+    },
+    "benefits": {
+      "title": "Manfaat yang Mereka Rasakan",
+      "subtitle": "Menginspirasi perubahan positif dalam kehidupan mereka",
+      "items": [
+        {
+          "title": "Hutan Adat Terlindungi",
+          "description": "Masyarakat adat semakin memahami batas dan nilai wilayahnya melalui pemetaan hutan, sehingga mampu menjaga dan mengelola sumber daya alam secara berkelanjutan."
+        },
+        {
+          "title": "Lingkungan Lebih Bersih & Sehat",
+          "description": "Melalui kegiatan daur ulang botol plastik menjadi EcoBrick, serta aksi bersih kampung dan penanaman mangrove, lingkungan sekitar menjadi lebih tertata dan bebas dari sampah."
+        },
+        {
+          "title": "Tumbuhnya Kesadaran Ekologis",
+          "description": "Masyarakat mulai melihat bahwa menjaga hutan dan lingkungan bukan hanya kewajiban, tapi juga investasi untuk masa depan kehidupan mereka sendiri."
+        }
+      ]
+    },
+    "gallery": {
+      "title": "Documentation",
+      "description": "Photos of teaching and learning activities in nature."
+    }
+  }
+}

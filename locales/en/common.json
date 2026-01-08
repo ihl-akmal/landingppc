@@ -3,5 +3,35 @@
     "logoAlt": "Logo Papua Paradise Center",
     "home": "Home",
     "program": "Program"
+  },
+  "cta": {
+    "title": "Mari Wujudkan Dampak Bersama",
+    "description": "Setiap kontribusi Anda, sekecil apapun, membawa perubahan nyata bagi mereka yang membutuhkan. Bergabunglah dengan kami hari ini.",
+    "buttonSupport": "Dukung Kami",
+    "modal": {
+      "title": "Donation Information ",
+      "labelBank": "Bank:",
+      "labelBranch": "Cabang:",
+      "labelAccountName": "Atas Nama:",
+      "labelAccountNumber": "No. Rekening:",
+      "buttonCopy": "Copy",
+      "buttonCopied": "Success Copied",
+      "buttonClose": "Close"
+    }
+  },
+  
+  "footer": {
+    "description": "Papua Paradise Center adalah organisasi nirlaba yang berfokus memberdayakan masyarakat Papua melalui program pendidikan, ekonomi kerakyatan, dan pembangunan berkelanjutan.",
+    "contactTitle": "Kontak",
+    "address": "Jl. Gudang Arang, Kamahedoga, Merauke\nPapua Selatan, 99613",
+    "quickLinksTitle": "Tautan Cepat",
+    "socmedTitle": "Follow Us",
+    "links": {
+      "about": "Tentang Kami",
+      "impact": "Impact",
+      "program": "Program",
+      "gallery": "Galeri Kegiatan"
+    }
+    
   }
 }

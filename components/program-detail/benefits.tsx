@@ -4,23 +4,25 @@ interface Benefit {
 }
 
 interface BenefitsProps {
-  benefits: Benefit[]
+  title: string
+  subtitle: string
+  items: Benefit[]
 }
 
-export function Benefits({ benefits }: BenefitsProps) {
+export function Benefits({ title, subtitle, items }: BenefitsProps) {
   return (
     <section className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">Manfaat yang Mereka Rasakan</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">{title}</h2>
             <p className="text-lg leading-relaxed">
-              Menginspirasi perubahan positif dalam kehidupan mereka
+              {subtitle}
             </p>
           </div>
 
           <div className="space-y-8">
-            {benefits.map((benefit, index) => (
+            {items.map((benefit, index) => (
               <div key={index} className="grid grid-cols-12 gap-3 items-start">
                 <div className="col-span-1 text-2xl md:text-3xl font-bold flex-shrink-0 pr-2">
                   {index + 1}.

@@ -13,14 +13,14 @@ type HeroDict = {
 
 
 export function Hero({ dict }: { dict: HeroDict }) {
-  
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
   return (
     <section id="home" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/galeri/galeri21.jpg"
+          src="https://res.cloudinary.com/doidg1auh/image/upload/galeri21_c7npyj.jpg"
           alt={dict.imageAlt}
           fill className="object-cover"
         />

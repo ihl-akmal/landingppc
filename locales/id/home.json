@@ -44,5 +44,34 @@
         "description": "Dari noken, keripik, hingga atribut adat."
       }
     ]
+  },
+  "programs": {
+    "title": "Program Kami",
+    "subtitle": "Inisiatif yang lahir dari semangat memberdayakan dan menjaga keberlanjutan.",
+    "cta": "Lihat Detail",
+    "items": [
+      {
+        "title": "Pendidikan Kontekstual",
+        "description": "Anak-anak belajar sambil bermain di Sekolah Alam Paradise, mengasah karakter, bahasa, serta keterampilan sesuai minat dan hobi. Setiap proses belajar dirancang kontekstual, menyenangkan, dan dekat dengan kehidupan sehari-hari."
+      },
+      {
+        "title": "Ekonomi Kerakyatan",
+        "description": "Mendampingi komunitas lokal mengembangkan produk kreatif berbasis budaya dan warisan leluhur, mulai dari noken hingga VCO dan keripik. Dengan dukungan kami, usaha mereka bisa bertumbuh sambil menjaga identitas dan kearifan lokal."
+      },
+      {
+        "title": "Hutan Adat & Lingkungan",
+        "description": "Bersama masyarakat adat memetakan wilayah hutan, menjaga ekosistem, dan mengubah sampah plastik menjadi EcoBrick untuk furnitur, menanam mangrove, serta bersih-bersih lingkungan guna menjaga lingkungan tetap lestari."
+      },
+      {
+        "title": "Budaya & Perempuan",
+        "description": "Melestarikan bahasa dan budaya lokal melalui buku saku dialek suku Marind, Marori, dan Kanum. Sementara itu, perempuan didorong untuk terlibat aktif dalam pengambilan keputusan dan kegiatan komunitas, memperkuat peran mereka di kampung."
+      }
+    ]
+  },
+  "gallery": {
+    "title": "Gallery Kegiatan",
+    "subtitle": "Momen nyata dari lapangan bersama masyarakat Papua",
+    "cta": "Lihat Lebih Banyak",
+    "imageAlt": "kegiatan papua paradise center"
   }
 }

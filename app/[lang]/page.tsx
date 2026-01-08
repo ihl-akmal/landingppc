@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
 }
 
 export default async function Home({ params }: { params: { lang: Locale } }) {
-  const dict = await getDictionary(params.lang, 'home');
+  const dict = await getDictionary(params.lang);
 
   return (
     <main className="min-h-screen">
@@ -25,12 +25,12 @@ export default async function Home({ params }: { params: { lang: Locale } }) {
       <Hero dict={dict.hero} />
       <About dict={dict.about} />
       <Impact dict={dict.impact} />
-      <Programs />
+      <Programs dict={dict.programs} />
       {/* <Stories /> */}
-      <Gallery />
+      <Gallery dict={dict.gallery} />
       {/* <Partners /> */}
-      <CTA />
-      <Footer />
+      <CTA dict={dict.cta} />
+      <Footer dict={dict.footer} />
     </main>
   )
 }

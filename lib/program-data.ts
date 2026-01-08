@@ -132,9 +132,9 @@ export const programsData: DetailedProgram[] = [
   },
   {
         id: "hutan-adat-lingkungan",
-        slug: "hutan-adat-lingukungan",
+        slug: "hutan-adat-lingkungan",
         icon: TreePine,
-        title: "Hutan Adat dan Linkungan",
+        title: "Hutan Adat dan Lingkungan",
         category: "Program",
         heroImage:"/galeri/galeri18.jpg",
         backgroundImage:"/galeri/galeri2.jpg",

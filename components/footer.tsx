@@ -2,7 +2,22 @@ import { Mail, Phone, MapPin, Facebook, Instagram, Twitter, Youtube, Linkedin } 
 import Image from "next/image"
 import Link from "next/link"
 
-export function Footer() {
+type FooterDict = {
+  description: string;
+  contactTitle: string;
+  address: string;
+  quickLinksTitle: string;
+  socmedTitle: string ;
+  links: { 
+    about: string; 
+    impact: string;
+    program: string;
+    gallery: string; 
+  };
+}
+
+export function Footer({ dict }: { dict: FooterDict }) {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   return (
     <footer className="bg-foreground text-background py-16">
       <div className="container mx-auto px-4">
@@ -14,10 +29,10 @@ export function Footer() {
             href="/"
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
-            <Image src="/logo-ppc.svg" alt="Logo Papua Paradise Center" width={250} height={250} className="h-16 w-16" />
+            <Image src={`${basePath}/logo-ppc.svg`} alt="Logo Papua Paradise Center" width={250} height={250} className="h-16 w-16" unoptimized />
           </Link>
             <p className="text-background/80 leading-relaxed mb-6">
-              Papua Paradise Center adalah organisasi nirlaba yang berfokus memberdayakan masyarakat Papua melalui program pendidikan, ekonomi kerakyatan, dan pembangunan berkelanjutan.
+              {dict.description}
             </p>
           </div>
 
@@ -40,9 +55,7 @@ export function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0" />
                 <span>
-                  Jl. Gudang Arang, Kamahedoga, Merauke
-                  <br />
-                  Papua Selatan, 99613
+                  {dict.address}
                 </span>
               </div>
             </div>
@@ -50,26 +63,26 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xl font-semibold mb-4">Tautan Cepat</h4>
+            <h4 className="text-xl font-semibold mb-4">{dict.quickLinksTitle}</h4>
             <ul className="space-y-2 text-background/80">
               <li>
                 <a href="/#about" className="hover:text-background transition-colors">
-                  Tentang Kami
+                  {dict.links.about}
                 </a>
               </li>
               <li>
                 <a href="/#impact" className="hover:text-background transition-colors">
-                  Impact
+                  {dict.links.impact}
                 </a>
               </li>
               <li>
                 <a href="/#program" className="hover:text-background transition-colors">
-                  Program
+                  {dict.links.program}
                 </a>
               </li>
               <li>
                 <a href="/#galeri" className="hover:text-background transition-colors">
-                  Galeri Kegiatan
+                  {dict.links.gallery}
                 </a>
               </li>
               
@@ -78,7 +91,7 @@ export function Footer() {
 
           {/* Social Media */}
           <div>
-            <h4 className="text-xl font-semibold mb-4">Ikuti Kami</h4>
+            <h4 className="text-xl font-semibold mb-4">{dict.socmedTitle}</h4>
             <div className="flex gap-4">
               <a
                 href="https://www.facebook.com/papua.paradise.39/" target="_blank"
@@ -107,7 +120,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-background/20 pt-8 text-center text-background/60">
-          <p>&copy; 2025 Papua Paradise Center. Semua hak dilindungi.</p>
+          <p>&copy; 2025 Papua Paradise Center. All rights reserved.</p>
         </div>
       </div>
     </footer>
