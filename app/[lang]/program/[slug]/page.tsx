@@ -157,8 +157,8 @@ export default async function ProgramDetailPage({ params }: { params: { slug: st
           images={program.galleryImages}
         /> 
       )}
-      <CTA dict={dict.cta} />
-      <Footer dict={dict.footer} />
+      {dict.cta && <CTA dict={dict.cta} />}
+      {dict.footer && <Footer dict={dict.footer} />}
     </main>
   )
 }

@@ -1,4 +1,8 @@
 {
+  "common": {
+    "notFoundTitle": "Program not found",
+    "notFoundDesc": "The requested program is not available."
+  },
   "nav": {
     "logoAlt": "Logo Papua Paradise Center",
     "home": "Home",
