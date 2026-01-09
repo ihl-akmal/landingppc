@@ -37,7 +37,8 @@
     },
     "gallery": {
       "title": "Dokumentasi",
-      "description": "Momen-momen berharga dari kegiatan kami di lapangan"
+      "description": "Momen-momen berharga dari kegiatan kami di lapangan",
+      "imageAlt": "Kegiatan belajar mengajar di Sekolah Alam Paradise"
     }
   },
   "grassroot-economy": {
@@ -74,7 +75,8 @@
     },
     "gallery": {
       "title": "Dokumentasi",
-      "description": "Momen-momen berharga dari kegiatan kami di lapangan"
+      "description": "Momen-momen berharga dari kegiatan kami di lapangan",
+      "imageAlt": "Kegiatan ekonomi kerakyatan masyarakat Papua"
     }
   },
   "indigenous-forest-and-environment": { 
@@ -111,7 +113,8 @@
     },
     "gallery": {
       "title": "Dokumentasi",
-      "description": "Momen-momen berharga dari kegiatan kami di lapangan"
+      "description": "Momen-momen berharga dari kegiatan kami di lapangan",
+      "imageAlt": "Kegiatan menjaga hutan adat dan lingkungan"
     }
   }
   

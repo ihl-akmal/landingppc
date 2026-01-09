@@ -37,7 +37,8 @@
     },
     "gallery": {
       "title": "Documentation",
-      "description": "Precious moments from our work in the field."
+      "description": "Precious moments from our work in the field.",
+      "imageAlt": "Learning activities at Paradise Nature School"
     }
   },
   "grassroot-economy": {
@@ -74,7 +75,8 @@
     },
     "gallery": {
       "title": "Documentation",
-      "description": "Precious moments from our work in the field"
+      "description": "Precious moments from our work in the field",
+      "imageAlt": "Grassroot economy activities in Papua"
     }
   },
   "indigenous-forest-and-environment": { 
@@ -111,7 +113,8 @@
     },
     "gallery": {
       "title": "Documentation",
-      "description": "Precious moments from our work in the field."
+      "description": "Precious moments from our work in the field.",
+      "imageAlt": "Indigenous forest and environment activities"
     }
   }
 }

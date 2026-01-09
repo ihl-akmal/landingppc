@@ -37,6 +37,7 @@ type ProgramDetailDict = {
   gallery: {
     title: string;
     description: string;
+    imageAlt: string;
   };
 }
 
@@ -63,13 +64,13 @@ export async function generateMetadata({ params }: { params: { slug: string; lan
   }
 
   // Gunakan fallback ke data program jika teks dictionary tidak ditemukan/belum lengkap
-  const title = programText?.hero?.title || program.title
-  const description = programText?.hero?.description || program.shortDescription
+  const title = programText?.hero?.title || "Program Detail"
+  const description = programText?.hero?.description || ""
 
   return {
     title: `${title} | Papua Paradise Center`,
     description: description.slice(0, 160),
-    keywords: [title, program.category, "Papua Paradise Center", "Papua", "Community Development"],
+    keywords: [title, programText?.hero?.category || "Program", "Papua Paradise Center", "Papua", "Community Development"],
     openGraph: {
       title: `${title} | Papua Paradise Center`,
       description: description.slice(0, 160),
@@ -113,8 +114,8 @@ export default async function ProgramDetailPage({ params }: { params: { slug: st
   }
 
   // Fallback values untuk mencegah error jika dictionary belum lengkap
-  const heroTitle = programText?.hero?.title || program.title
-  const heroDescription = programText?.hero?.description || program.shortDescription
+  const heroTitle = programText?.hero?.title || ""
+  const heroDescription = programText?.hero?.description || ""
 
   // Schema Markup untuk SEO agar Google mengenali ini sebagai Program/Layanan
   const jsonLd = {
@@ -131,18 +132,24 @@ export default async function ProgramDetailPage({ params }: { params: { slug: st
     "url": `https://papuaparadisecenter.org/${params.lang}/program/${params.slug}`
   }
 
+  // Menggabungkan data gambar dari program-data.ts dengan alt text dari json
+  const galleryImages = program.galleryImages.map((img) => ({
+    src: img.src,
+    alt: programText?.gallery?.imageAlt || heroTitle
+  }))
+
   return (
     <main className="min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navigation />
       <ProgramHero
         title={heroTitle}
-        category={programText?.hero?.category || program.category}
+        category={programText?.hero?.category || "Program"}
         description={heroDescription}
         backgroundImage={program.heroImage}
       />
-      <Background title={programText?.background?.title || program.backgroundTitle} content={programText?.background?.content || program.backgroundContent} />
-      <Activity title={programText?.activity?.title || program.activityTitle} description={programText?.activity?.description || program.activityDescription} image={program.activityImage} />
+      <Background title={programText?.background?.title || ""} content={programText?.background?.content || ""} />
+      <Activity title={programText?.activity?.title || ""} description={programText?.activity?.description || ""} image={program.activityImage} />
       
       {/* Render Benefits hanya jika data tersedia di dictionary */}
       {programText?.benefits && (
@@ -154,7 +161,7 @@ export default async function ProgramDetailPage({ params }: { params: { slug: st
         <Gallery 
           title={programText.gallery.title}
           description={programText.gallery.description}
-          images={program.galleryImages}
+          images={galleryImages}
         /> 
       )}
       {dict.cta && <CTA dict={dict.cta} />}
