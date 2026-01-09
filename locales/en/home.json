@@ -1,77 +1,73 @@
 {
   "hero": {
     "imageAlt": "Papua Paradise Center",
-    "title": "Papua Paradise Center",
-    "subtitle": "Protecting indigenous land, empowering communities.",
-    "cta": "View Our Programs"
+    "title": "Papua Paradise Center Association",
+    "subtitle": "Indigenous lands protected, indigenous communities thriving.",
+    "cta": "See Our Programs"
   },
   "about": {
     "AboutTitle": "About Us",
     "visionTitle": "Vision",
-    "visionText": "Mewujudkan Sumber Daya Manusia Papua yang Berkarakter, Berperikemanusiaan, Bersociopreneur, Cinta Alam dan Budaya dengan Spirit Filosofi Noken.",
+    "visionText": "To empower Papuan people to thrive with strong character, humanity, social entrepreneurship, and deep reverence for nature and culture, rooted in the spirit of Noken philosophy.",
     "missionTitle": "Mission",
     "missionList": [
-      "Berkolaborasi dengan komunitas dan kelompok yang memiliki tujuan sama.",
-      "Mendidik dan membinaa generasi emas Papua (anak usia dini), mengikuti pendidikan karakter, skill dan cinta lingkungan.",
-      "Mengadvokasi dan mendampingi masyarakat adat untuk tetap memiliki prinsip hidup berkearifan lokal di tengah arus global.",
-      "Advokasi dan pendampingan ekonomi kerakyatan berbasis suku dan kelompok perempuan.",
-      "Menanamkan rasa cinta yang dalam kepada alam dan melestarikan budaya yang hampir punah.",
-      "Serta turut mendukung GEDSI"
-    ] 
+      "Collaborate with communities and groups that share our vision and values.",
+      "Build character, skills, and environmental awareness in Papua's youngest generation.",
+      "Advocate for and support indigenous communities in preserving their locally-rooted principles and ways of life amid globalization.",
+      "Advance grassroots economic empowerment for tribal communities and women's groups.",
+      "Cultivate profound respect for nature and revitalize endangered cultural traditions.",
+      "Champion and support GEDSI (Gender Equality, Disability, and Social Inclusion) principles."
+    ]
   },
   "impact": {
-    "ImpactTitle": "Our Impact",
-    "ImpactSubtitle": "Kami mengubah niat baik menjadi hasil yang dapat dilihat dan diukur.",
+    "ImpactTitle": "Our Impact in Numbers",
+    "ImpactSubtitle": "We transform good intentions into visible, measurable outcomes.",
     "ImpactStats": [
       {
         "number": "132",
-        "label": "Anak Belajar Aktif",
-        "description": "Anak-anak yang mengikuti Sekolah Alam Paradise."
+        "label": "Active Young Learners",
+        "description": "Children enrolled in Paradise Nature School."
       },
       {
         "number": "5",
-        "label": "Bidang Belajar yang Ditekuni",
-        "description": "Mulai dari bahasa, karakter, ecosociopreneur, anti korupsi, olahraga"
+        "label": "Learning Areas",
+        "description": "Such as language, character building, eco-sociopreneur, anti-corruption, and sports."
       },
       {
         "number": "4",
-        "label": "Kelompok Dampingan",
-        "description": "Kelompok lokal yang terberdayakan"
+        "label": "Community Groups Supported",
+        "description": "Local groups we've empowered."
       },
       {
         "number": "14",
-        "label": "Produk Lokal Siap Jual",
-        "description": "Dari noken, keripik, hingga atribut adat."
+        "label": "Market-Ready Local Products",
+        "description": "From noken and traditional snacks to cultural artifacts."
       }
     ]
   },
   "programs": {
     "title": "Our Programs",
-    "subtitle": "Inisiatif yang lahir dari semangat memberdayakan dan menjaga keberlanjutan.",
-    "cta": "Lihat Detail",
+    "subtitle": "Initiatives born from a commitment to empower communities and sustain our environment.",
+    "cta": "Learn More",
     "items": [
       {
-        "title": "Pendidikan Kontekstual",
-        "description": "Anak-anak belajar sambil bermain di Sekolah Alam Paradise, mengasah karakter, bahasa, serta keterampilan sesuai minat dan hobi. Setiap proses belajar dirancang kontekstual, menyenangkan, dan dekat dengan kehidupan sehari-hari."
+        "title": "Contextual Education",
+        "description": "Children learn through play at Paradise Nature School, developing character, language, and talents. Every experience is contextual, joyful, and rooted in everyday life."
       },
       {
-        "title": "Ekonomi Kerakyatan",
-        "description": "Mendampingi komunitas lokal mengembangkan produk kreatif berbasis budaya dan warisan leluhur, mulai dari noken hingga VCO dan keripik. Dengan dukungan kami, usaha mereka bisa bertumbuh sambil menjaga identitas dan kearifan lokal."
+        "title": "Grassroots Economy",
+        "description": "We help local communities build enterprises around cultural products like noken, virgin coconut oil, and traditional snacks, growing economically while honoring their heritage."
       },
       {
-        "title": "Hutan Adat & Lingkungan",
-        "description": "Bersama masyarakat adat memetakan wilayah hutan, menjaga ekosistem, dan mengubah sampah plastik menjadi EcoBrick untuk furnitur, menanam mangrove, serta bersih-bersih lingkungan guna menjaga lingkungan tetap lestari."
-      },
-      {
-        "title": "Budaya & Perempuan",
-        "description": "Melestarikan bahasa dan budaya lokal melalui buku saku dialek suku Marind, Marori, dan Kanum. Sementara itu, perempuan didorong untuk terlibat aktif dalam pengambilan keputusan dan kegiatan komunitas, memperkuat peran mereka di kampung."
+        "title": "Indigenous Forests and Environment",
+        "description": "We work with indigenous communities to map forests, protect ecosystems, transform plastic into EcoBricks, plant mangroves, and organize clean-ups."
       }
     ]
   },
   "gallery": {
-    "title": "Gallery Kegiatan",
-    "subtitle": "Momen nyata dari lapangan bersama masyarakat Papua",
-    "cta": "Lihat Lebih Banyak",
-    "imageAlt": "kegiatan papua paradise center"
+    "title": "Activity Gallery",
+    "subtitle": "Snapshots from our work with communities across Papua",
+    "cta": "See More",
+    "imageAlt": "papua paradise center activity"
   }
 }

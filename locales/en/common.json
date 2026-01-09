@@ -5,32 +5,32 @@
     "program": "Program"
   },
   "cta": {
-    "title": "Mari Wujudkan Dampak Bersama",
-    "description": "Setiap kontribusi Anda, sekecil apapun, membawa perubahan nyata bagi mereka yang membutuhkan. Bergabunglah dengan kami hari ini.",
-    "buttonSupport": "Dukung Kami",
+    "title": "Be Part of the Change",
+    "description": "Every contribution, no matter how small, brings real change to those who need it most. Join us today.",
+    "buttonSupport": "Support Us",
     "modal": {
       "title": "Donation Information ",
       "labelBank": "Bank:",
-      "labelBranch": "Cabang:",
-      "labelAccountName": "Atas Nama:",
-      "labelAccountNumber": "No. Rekening:",
+      "labelBranch": "Branch:",
+      "labelAccountName": "Account Name:",
+      "labelAccountNumber": "Account Number:",
       "buttonCopy": "Copy",
-      "buttonCopied": "Success Copied",
+      "buttonCopied": "Successfully copied",
       "buttonClose": "Close"
     }
   },
   
   "footer": {
-    "description": "Papua Paradise Center adalah organisasi nirlaba yang berfokus memberdayakan masyarakat Papua melalui program pendidikan, ekonomi kerakyatan, dan pembangunan berkelanjutan.",
-    "contactTitle": "Kontak",
-    "address": "Jl. Gudang Arang, Kamahedoga, Merauke\nPapua Selatan, 99613",
-    "quickLinksTitle": "Tautan Cepat",
+    "description": "Papua Paradise Center is a nonprofit dedicated to empowering Papuan communities through education, grassroots economic initiatives, and sustainable development.",
+    "contactTitle": "Contact Us",
+    "address": "Gudang Arang Street, Kamahedoga, Merauke, South Papua 99613, Indonesia",
+    "quickLinksTitle": "Quick Links",
     "socmedTitle": "Follow Us",
     "links": {
-      "about": "Tentang Kami",
+      "about": "About Us",
       "impact": "Impact",
-      "program": "Program",
-      "gallery": "Galeri Kegiatan"
+      "program": "Our Programs",
+      "gallery": "Activity Gallery"
     }
     
   }

@@ -50,10 +50,10 @@ export type DetailedProgram = {
 
 export const programsData: DetailedProgram[] = [
     {
-        id: "pendidikan-kontekstual",
-        slug: "pendidikan-kontekstual",
+        id: "contextual-education",
+        slug: "contextual-education",
         icon: GraduationCap,
-        title: "Pendidikan Kontekstual",
+        title: "Contextual Education",
         category: "Program",
         heroImage:"/galeri/galeri4.jpg",
         backgroundImage:"/galeri/galeri4.jpg",
@@ -92,10 +92,10 @@ export const programsData: DetailedProgram[] = [
         ],
   },
   {
-        id: "ekonomi-kerakyatan",
-        slug: "ekonomi-kerakyatan",
+        id: "grassroot-economy",
+        slug: "grassroot-economy",
         icon: Package,
-        title: "Ekonomi Kerakyatan",
+        title: "Grassroot Economy",
         category: "Program",
         heroImage:"/galeri/galeri25.jpg",
         backgroundImage:"/galeri/galeri2.jpg",
@@ -131,10 +131,10 @@ export const programsData: DetailedProgram[] = [
         ],
   },
   {
-        id: "hutan-adat-lingkungan",
-        slug: "hutan-adat-lingkungan",
+        id: "indigenous-forest-and-environment",
+        slug: "indigenous-forest-and-environment",
         icon: TreePine,
-        title: "Hutan Adat dan Lingkungan",
+        title: "Indigenous Forest and Environment",
         category: "Program",
         heroImage:"/galeri/galeri18.jpg",
         backgroundImage:"/galeri/galeri2.jpg",

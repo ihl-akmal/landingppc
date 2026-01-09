@@ -20,11 +20,7 @@ const PROGRAMS_DATA = [
     image: `${basePath}/galeri/galeri18.jpg`,
     slug: "hutan-adat-lingkungan",
   },
-  {
-    icon: Briefcase,
-    image: `${basePath}/galeri/galeri25.jpg`,
-    slug: "budaya-perempuan",
-  },
+  
 ]
 
 type ProgramsDict = {
@@ -49,7 +45,7 @@ export function Programs({ dict }: { dict: ProgramsDict }) {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {PROGRAMS_DATA.map((program, index) => (
             <div key={program.slug} className="bg-background overflow-hidden group flex flex-col h-full">
               <div className="relative h-48 overflow-hidden">

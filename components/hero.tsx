@@ -20,7 +20,7 @@ export function Hero({ dict }: { dict: HeroDict }) {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://res.cloudinary.com/doidg1auh/image/upload/galeri21_c7npyj.jpg"
+          src="/galeri/galeri21.jpg"
           alt={dict.imageAlt}
           fill className="object-cover"
         />

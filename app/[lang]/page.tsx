@@ -13,6 +13,7 @@ import { Footer } from "@/components/footer"
 
 export async function generateMetadata({ params }: { params: { lang: Locale } }) {
   // Metadata logic here if needed
+   
   return {};
 }
 

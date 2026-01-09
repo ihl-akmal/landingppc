@@ -65,7 +65,36 @@ export async function generateMetadata({ params }: { params: { slug: string; lan
   return {
     title: `${programText.hero.title} | Papua Paradise Center`,
     description: programText.hero.description.slice(0, 160),
-    
+    keywords: [programText.hero.title, program.category, "Papua Paradise Center", "Papua", "Community Development"],
+    openGraph: {
+      title: `${programText.hero.title} | Papua Paradise Center`,
+      description: programText.hero.description.slice(0, 160),
+      url: `https://papuaparadisecenter.org/${params.lang}/program/${params.slug}`,
+      siteName: "Papua Paradise Center",
+      locale: params.lang === "id" ? "id_ID" : "en_US",
+      type: "article",
+      images: [
+        {
+          url: program.heroImage,
+          width: 1200,
+          height: 630,
+          alt: programText.hero.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: programText.hero.title,
+      description: programText.hero.description.slice(0, 160),
+      images: [program.heroImage],
+    },
+    alternates: {
+      canonical: `/${params.lang}/program/${params.slug}`,
+      languages: {
+        'en': `/en/program/${params.slug}`,
+        'id': `/id/program/${params.slug}`,
+      },
+    },
   }
 }
 
@@ -79,8 +108,24 @@ export default async function ProgramDetailPage({ params }: { params: { slug: st
     notFound()
   }
 
+  // Schema Markup untuk SEO agar Google mengenali ini sebagai Program/Layanan
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": programText.hero.title,
+    "description": programText.hero.description,
+    "provider": {
+      "@type": "Organization",
+      "name": "Papua Paradise Center",
+      "url": "https://papuaparadisecenter.org"
+    },
+    "image": [`https://papuaparadisecenter.org${program.heroImage}`],
+    "url": `https://papuaparadisecenter.org/${params.lang}/program/${params.slug}`
+  }
+
   return (
     <main className="min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navigation />
       <ProgramHero
         title={programText.hero.title}

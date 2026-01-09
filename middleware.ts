@@ -1,24 +1,30 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
-import { i18n } from './i18n-config'
+import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname
-  const pathnameIsMissingLocale = i18n.locales.every(
-    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
-  )
+const PUBLIC_FILE = /\.(.*)$/;
+const locales = ["id", "en"];
 
-  if (pathnameIsMissingLocale) {
-    const locale = i18n.defaultLocale
-    return NextResponse.redirect(
-      new URL(
-        `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
-        request.url
-      )
-    )
+export function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+
+  // 👉 Biarkan static assets lewat
+  if (
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/api") ||
+    PUBLIC_FILE.test(pathname)
+  ) {
+    return;
   }
-}
 
-export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  // 👉 Jika URL sudah pakai locale, lanjut
+  const hasLocale = locales.some(
+    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
+  );
+
+  if (hasLocale) return;
+
+  // 👉 Default redirect ke /id
+  const url = req.nextUrl.clone();
+  url.pathname = `/en${pathname}`;
+
+  return NextResponse.redirect(url);
 }
