@@ -54,21 +54,25 @@ export async function generateMetadata({ params }: { params: { slug: string; lan
   const program = getProgramBySlug(params.slug)
   const dict = await getDictionary(params.lang)
   // Mengakses data dengan aman menggunakan key slug
-  const programText = dict.programDetails[params.slug as keyof typeof dict.programDetails] as ProgramDetailDict | undefined
+  const programText = dict.programDetails?.[params.slug as keyof typeof dict.programDetails] as ProgramDetailDict | undefined
 
-  if (!program || !programText) {
+  if (!program) {
     return {
       title: "Program Not Found",
     }
   }
 
+  // Gunakan fallback ke data program jika teks dictionary tidak ditemukan/belum lengkap
+  const title = programText?.hero?.title || program.title
+  const description = programText?.hero?.description || program.shortDescription
+
   return {
-    title: `${programText.hero.title} | Papua Paradise Center`,
-    description: programText.hero.description.slice(0, 160),
-    keywords: [programText.hero.title, program.category, "Papua Paradise Center", "Papua", "Community Development"],
+    title: `${title} | Papua Paradise Center`,
+    description: description.slice(0, 160),
+    keywords: [title, program.category, "Papua Paradise Center", "Papua", "Community Development"],
     openGraph: {
-      title: `${programText.hero.title} | Papua Paradise Center`,
-      description: programText.hero.description.slice(0, 160),
+      title: `${title} | Papua Paradise Center`,
+      description: description.slice(0, 160),
       url: `https://papuaparadisecenter.org/${params.lang}/program/${params.slug}`,
       siteName: "Papua Paradise Center",
       locale: params.lang === "id" ? "id_ID" : "en_US",
@@ -78,14 +82,14 @@ export async function generateMetadata({ params }: { params: { slug: string; lan
           url: program.heroImage,
           width: 1200,
           height: 630,
-          alt: programText.hero.title,
+          alt: title,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: programText.hero.title,
-      description: programText.hero.description.slice(0, 160),
+      title: title,
+      description: description.slice(0, 160),
       images: [program.heroImage],
     },
     alternates: {
@@ -102,18 +106,22 @@ export async function generateMetadata({ params }: { params: { slug: string; lan
 export default async function ProgramDetailPage({ params }: { params: { slug: string; lang: Locale } }) {
   const program = getProgramBySlug(params.slug)
   const dict = await getDictionary(params.lang)
-  const programText = dict.programDetails[params.slug as keyof typeof dict.programDetails] as ProgramDetailDict | undefined
+  const programText = dict.programDetails?.[params.slug as keyof typeof dict.programDetails] as ProgramDetailDict | undefined
 
-  if (!program || !programText) {
+  if (!program) {
     notFound()
   }
+
+  // Fallback values untuk mencegah error jika dictionary belum lengkap
+  const heroTitle = programText?.hero?.title || program.title
+  const heroDescription = programText?.hero?.description || program.shortDescription
 
   // Schema Markup untuk SEO agar Google mengenali ini sebagai Program/Layanan
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": programText.hero.title,
-    "description": programText.hero.description,
+    "name": heroTitle,
+    "description": heroDescription,
     "provider": {
       "@type": "Organization",
       "name": "Papua Paradise Center",
@@ -128,20 +136,27 @@ export default async function ProgramDetailPage({ params }: { params: { slug: st
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navigation />
       <ProgramHero
-        title={programText.hero.title}
-        category={programText.hero.category}
-        description={programText.hero.description}
+        title={heroTitle}
+        category={programText?.hero?.category || program.category}
+        description={heroDescription}
         backgroundImage={program.heroImage}
       />
-      <Background title={programText.background.title} content={programText.background.content} />
-      <Activity title={programText.activity.title} description={programText.activity.description} image={program.activityImage} />
-      <Benefits title={programText.benefits.title} subtitle={programText.benefits.subtitle} items={programText.benefits.items} />
+      <Background title={programText?.background?.title || program.backgroundTitle} content={programText?.background?.content || program.backgroundContent} />
+      <Activity title={programText?.activity?.title || program.activityTitle} description={programText?.activity?.description || program.activityDescription} image={program.activityImage} />
+      
+      {/* Render Benefits hanya jika data tersedia di dictionary */}
+      {programText?.benefits && (
+        <Benefits title={programText.benefits.title} subtitle={programText.benefits.subtitle} items={programText.benefits.items} />
+      )}
+      
       {/* Gallery component might need refactoring to accept title/desc from dict if needed, currently passing images only */}
-      <Gallery 
-        title={programText.gallery.title}
-        description= {programText.gallery.description}
-        images={program.galleryImages}
-      /> 
+      {programText?.gallery && (
+        <Gallery 
+          title={programText.gallery.title}
+          description={programText.gallery.description}
+          images={program.galleryImages}
+        /> 
+      )}
       <CTA dict={dict.cta} />
       <Footer dict={dict.footer} />
     </main>
