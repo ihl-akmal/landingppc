@@ -11,27 +11,27 @@ import { Partners } from "@/components/partners"
 import { CTA } from "@/components/cta"
 import { Footer } from "@/components/footer"
 
-export async function generateMetadata({ params }: { params: { lang: Locale } }) {
-  // Metadata logic here if needed
+// export async function generateMetadata({ params }: { params: { lang: Locale } }) {
+//   // Metadata logic here if needed
    
-  return {};
-}
+//   return {};
+// }
 
 export default async function Home({ params }: { params: { lang: Locale } }) {
   const dict = await getDictionary(params.lang);
 
   return (
     <main className="min-h-screen">
-      <Navigation />
-      <Hero dict={dict.hero} />
-      <About dict={dict.about} />
-      <Impact dict={dict.impact} />
-      <Programs dict={dict.programs} />
+       <Navigation />
+      <Hero dict={dict.home.hero} />
+      <About dict={dict.home.about} />
+      <Impact dict={dict.home.impact} />
+      <Programs dict={dict.home.programs} />
       {/* <Stories /> */}
-      <Gallery dict={dict.gallery} />
+      <Gallery dict={dict.home.gallery} />
       {/* <Partners /> */}
-      <CTA dict={dict.cta} />
-      <Footer dict={dict.footer} />
+      <CTA dict={dict.common.cta} />
+      <Footer dict={dict.common.footer} /> 
     </main>
   )
 }

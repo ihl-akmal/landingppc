@@ -8,7 +8,10 @@ const dictionaries = {
       import('@/locales/id/home.json').then((module) => module.default),
       import('@/locales/id/program-details.json').then((module) => module.default),
     ])
-    return { ...common, ...home, programDetails }
+    return {
+  common,
+  home,
+  programDetails, }
   },
   en: async () => {
     const [common, home, programDetails] = await Promise.all([
@@ -16,8 +19,20 @@ const dictionaries = {
       import('@/locales/en/home.json').then((module) => module.default),
       import('@/locales/en/program-details.json').then((module) => module.default),
     ])
-    return { ...common, ...home, programDetails }
+    return {
+  common,
+  home,
+  programDetails,}
   },
 }
 
-export const getDictionary = async (locale: Locale) => dictionaries[locale]()
+export const getDictionary = async (locale: Locale) => {
+  const loader = dictionaries[locale]
+
+  if (!loader) {
+    console.warn("⚠️ getDictionary fallback locale:", locale)
+    return dictionaries.en()
+  }
+
+  return loader()
+}

@@ -31,9 +31,17 @@ export function Impact({ dict }: { dict: ImpactDict }) {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-primary mb-6">
                   <Icon className="h-8 w-8 text-primary-foreground" />
                 </div>
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-3">{stat.number}</div>
-                <div className="text-xl font-semibold mb-2">{stat.label}</div>
-                <div className="text-sm text-muted-foreground">{stat.description}</div>
+                <div className="text-4xl md:text-5xl font-bold text-primary mb-3">
+                  {stat?.number ?? ""}
+                </div>
+
+                <div className="text-xl font-semibold mb-2">
+                  {stat?.label ?? ""}
+                </div>
+
+                <div className="text-sm text-muted-foreground">
+                  {stat?.description ?? ""}
+                </div>
               </div>
             );
           })}

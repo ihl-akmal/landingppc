@@ -46,31 +46,47 @@ export function Programs({ dict }: { dict: ProgramsDict }) {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {PROGRAMS_DATA.map((program, index) => (
-            <div key={program.slug} className="bg-background overflow-hidden group flex flex-col h-full">
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={program.image || "/placeholder.svg"}
-                  alt={dict.items[index].title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-              </div>
-              <div className="p-6 flex flex-col flex-1">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-primary mb-4">
-                  <program.icon className="h-6 w-6 text-primary-foreground" />
-                </div>
-                <h3 className="text-xl font-bold mb-3">{dict.items[index].title}</h3>
-                <p className="text-muted-foreground leading-relaxed mb-6 flex-1">
-                  {dict.items[index].description}
-                </p>
-                <Link href={`/program/${program.slug}`}>
-                  <Button className="bg-primary text-primary-foreground hover:bg-primary/90 w-full text-sm">
-                    {dict.cta}
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          ))}
+          {PROGRAMS_DATA.map((program, index) => {
+  const item = dict.items?.[index]
+
+  if (!item) return null // ⛑️ SSG safety
+
+  return (
+    <div
+      key={program.slug}
+      className="bg-background overflow-hidden group flex flex-col h-full"
+    >
+      <div className="relative h-48 overflow-hidden">
+        <img
+          src={program.image || "/placeholder.svg"}
+          alt={item.title}
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+      </div>
+
+      <div className="p-6 flex flex-col flex-1">
+        <div className="inline-flex items-center justify-center w-12 h-12 bg-primary mb-4">
+          <program.icon className="h-6 w-6 text-primary-foreground" />
+        </div>
+
+        <h3 className="text-xl font-bold mb-3">
+          {item.title}
+        </h3>
+
+        <p className="text-muted-foreground leading-relaxed mb-6 flex-1">
+          {item.description}
+        </p>
+
+        <Link href={`/program/${program.slug}`}>
+          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 w-full text-sm">
+            {dict.cta}
+          </Button>
+        </Link>
+      </div>
+    </div>
+  )
+})}
+
         </div>
       </div>
     </section>

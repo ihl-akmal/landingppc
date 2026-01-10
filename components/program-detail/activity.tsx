@@ -5,6 +5,8 @@ interface ActivityProps {
 }
 
 export function Activity({ title, description, image }: ActivityProps) {
+  if (!title && !description) return null
+  
   return (
     <section className="py-20 md:py-28 bg-secondary">
       <div className="container mx-auto px-4">

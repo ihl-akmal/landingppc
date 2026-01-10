@@ -11,6 +11,9 @@ import { notFound } from "next/navigation"
 import { getDictionary } from "@/lib/dictionaries"
 import { i18n, type Locale } from "@/i18n-config"
 
+export const dynamic = "error"
+
+
 // Definisi tipe data sesuai struktur di program-details.json (seperti HeroDict di hero.tsx)
 type ProgramDetailDict = {
   hero: {
@@ -51,57 +54,55 @@ export async function generateStaticParams() {
 }
 
 //tambahkan fungsi metadata dinamis
-export async function generateMetadata({ params }: { params: { slug: string; lang: Locale } }) {
-  const program = getProgramBySlug(params.slug)
-  const dict = await getDictionary(params.lang)
-  // Mengakses data dengan aman menggunakan key slug
-  const programText = dict.programDetails?.[params.slug as keyof typeof dict.programDetails] as ProgramDetailDict | undefined
+// export async function generateMetadata({ params }: { params: { slug: string; lang: Locale } }) {
+//   const program = getProgramBySlug(params.slug)
+  
 
-  if (!program) {
-    return {
-      title: "Program Not Found",
-    }
-  }
+//   if (!program) {
+//     return {
+//       title: "Program Not Found",
+//     }
+//   }
 
-  // Gunakan fallback ke data program jika teks dictionary tidak ditemukan/belum lengkap
-  const title = programText?.hero?.title || "Program Detail"
-  const description = programText?.hero?.description || ""
+//   // Gunakan fallback ke data program jika teks dictionary tidak ditemukan/belum lengkap
+//   const title = program.title || "Program Detail"
+  
 
-  return {
-    title: `${title} | Papua Paradise Center`,
-    description: description.slice(0, 160),
-    keywords: [title, programText?.hero?.category || "Program", "Papua Paradise Center", "Papua", "Community Development"],
-    openGraph: {
-      title: `${title} | Papua Paradise Center`,
-      description: description.slice(0, 160),
-      url: `https://papuaparadisecenter.org/${params.lang}/program/${params.slug}`,
-      siteName: "Papua Paradise Center",
-      locale: params.lang === "id" ? "id_ID" : "en_US",
-      type: "article",
-      images: [
-        {
-          url: program.heroImage,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: title,
-      description: description.slice(0, 160),
-      images: [program.heroImage],
-    },
-    alternates: {
-      canonical: `/${params.lang}/program/${params.slug}`,
-      languages: {
-        'en': `/en/program/${params.slug}`,
-        'id': `/id/program/${params.slug}`,
-      },
-    },
-  }
-}
+//   return {
+//     title: `${title} | Papua Paradise Center`,
+//     description: "Community development program by Papua Paradise Center",
+//     // keywords: [title, programText?.hero?.category || "Program", "Papua Paradise Center", "Papua", "Community Development"],
+//     openGraph: {
+//       title: `${title} | Papua Paradise Center`,
+//       description: "Community development program by Papua Paradise Center",
+//       url: `https://papuaparadisecenter.org/${params.lang}/program/${params.slug}`,
+//       siteName: "Papua Paradise Center",
+//       locale: params.lang === "id" ? "id_ID" : "en_US",
+//       type: "article",
+//       images: [
+//         {
+//           url: program.heroImage,
+//           width: 1200,
+//           height: 630,
+//           alt: title,
+//         },
+//       ],
+//     },
+//     // twitter: {
+//     //   card: "summary_large_image",
+//     //   title: title,
+//     //   description: description.slice(0, 160),
+//     //   images: [program.heroImage],
+//     // },
+//     alternates: {
+//       canonical: `/${params.lang}/program/${params.slug}`,
+//       languages: {
+//         'en': `/en/program/${params.slug}`,
+//         'id': `/id/program/${params.slug}`,
+//       },
+//     },
+//   }
+// }
 
 
 export default async function ProgramDetailPage({ params }: { params: { slug: string; lang: Locale } }) {
@@ -118,29 +119,48 @@ export default async function ProgramDetailPage({ params }: { params: { slug: st
   const heroDescription = programText?.hero?.description || ""
 
   // Schema Markup untuk SEO agar Google mengenali ini sebagai Program/Layanan
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": heroTitle,
-    "description": heroDescription,
-    "provider": {
-      "@type": "Organization",
-      "name": "Papua Paradise Center",
-      "url": "https://papuaparadisecenter.org"
-    },
-    "image": [`https://papuaparadisecenter.org${program.heroImage}`],
-    "url": `https://papuaparadisecenter.org/${params.lang}/program/${params.slug}`
-  }
+  // Schema Markup (SAFE for build & JSON.stringify)
+// const jsonLd = {
+//   "@context": "https://schema.org",
+//   "@type": "Service",
+//   name: heroTitle || "Program",
+//   description: heroDescription || "Community development program",
+//   provider: {
+//     "@type": "Organization",
+//     name: "Papua Paradise Center",
+//     url: "https://papuaparadisecenter.org",
+//   },
+//   image: program?.heroImage
+//     ? [`https://papuaparadisecenter.org${program.heroImage}`]
+//     : [],
+//   url: `https://papuaparadisecenter.org/${params.lang}/program/${params.slug}`,
+// }
+
 
   // Menggabungkan data gambar dari program-data.ts dengan alt text dari json
-  const galleryImages = program.galleryImages.map((img) => ({
-    src: img.src,
-    alt: programText?.gallery?.imageAlt || heroTitle
-  }))
+  const galleryImages = program.galleryImages
+  ? program.galleryImages.map((img) => ({
+      src: img.src,
+      alt: programText?.gallery?.imageAlt || heroTitle
+    }))
+  : []
+
 
   return (
     <main className="min-h-screen">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {/* <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: (() => {
+      try {
+        return JSON.stringify(jsonLd)
+      } catch {
+        return ""
+      }
+    })(),
+  }}
+/> */}
+
       <Navigation />
       <ProgramHero
         title={heroTitle}
@@ -164,8 +184,8 @@ export default async function ProgramDetailPage({ params }: { params: { slug: st
           images={galleryImages}
         /> 
       )}
-      {dict.cta && <CTA dict={dict.cta} />}
-      {dict.footer && <Footer dict={dict.footer} />}
+      {dict.common.cta && <CTA dict={dict.common.cta} />}
+      {dict.common.footer && <Footer dict={dict.common.footer} />}
     </main>
   )
 }
