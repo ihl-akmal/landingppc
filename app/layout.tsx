@@ -9,64 +9,70 @@ import { GA_ID } from "@/lib/gtag"
 
 
 
-// export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
-//   const lang = params?.lang || "en"
+export async function generateMetadata({ params }: { params: { lang: string } }) {
+  // 1. Ambil lang dengan aman (menghindari undefined saat build)
+  const lang = params?.lang === "id" ? "id" : "en"
 
-//   const meta = {
-//     en: {
-//       description: "Papua Paradise Center is a nonprofit dedicated to empowering Papuan communities through education, grassroots economic initiatives, and sustainable development.",
-//       ogLocale: "en_US",
-//       keywords: ["Papua", "Non-profit organization", "Community empowerment", "Papua Paradise Center", "Sustainable development"]
-//     },
-//     id: {
-//       description: "Papua Paradise Center adalah organisasi nirlaba yang berfokus memberdayakan masyarakat Papua melalui program pendidikan, ekonomi kerakyatan, dan pembangunan berkelanjutan.",
-//       ogLocale: "id_ID",
-//       keywords: ["Papua", "Organisasi Masyarakat Sipil", "Organisasi nirlaba", "Pemberdayaan masyarakat", "Papua Paradise Center"]
-//     }
-//   }
+  const meta = {
+    en: {
+      description: "Papua Paradise Center is a nonprofit dedicated to empowering Papuan communities through education, grassroots economic initiatives, and sustainable development.",
+      ogLocale: "en_US",
+      keywords: ["Papua", "Non-profit organization", "Community empowerment", "Papua Paradise Center", "Sustainable development"]
+    },
+    id: {
+      description: "Papua Paradise Center adalah organisasi nirlaba yang berfokus memberdayakan masyarakat Papua melalui program pendidikan, ekonomi kerakyatan, dan pembangunan berkelanjutan.",
+      ogLocale: "id_ID",
+      keywords: ["Papua", "Organisasi Masyarakat Sipil", "Organisasi nirlaba", "Pemberdayaan masyarakat", "Papua Paradise Center"]
+    }
+  }
 
-//   const current = meta[lang as keyof typeof meta] || meta.en
+  const current = meta[lang as keyof typeof meta]
 
-//   return {
-//     metadataBase: new URL("https://papuaparadisecenter.org"),
-//     title: 'Papua Paradise Center',
-//     description: current.description,
-//     keywords: current.keywords,
-//     openGraph: {
-//       title: "Papua Paradise Center",
-//       description: current.description,
-//       url: "https://papuaparadisecenter.org",
-//       siteName: "Papua Paradise Center",
-//       locale: current.ogLocale,
-//       type: "website",
-//       images: [
-//         {
-//           url: "https://papuaparadisecenter.org/galeri/galeri21.jpg",
-//           width: 1200,
-//           height: 630,
-//           alt: "Papua Paradise Center",
-//         },
-//       ],
-//     },
-//     twitter: {
-//       card: "summary_large_image",
-//       title: "Papua Paradise Center",
-//       description: current.description,
-//       images: ["https://papuaparadisecenter.org/galeri/galeri21.jpg"],
-//     },
-//     alternates: {
-//       canonical: "./",
-//     },
-//     icons: {
-//       icon: [
-//         { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-//         { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-//       ],
-//       apple: '/favicon/apple-touch-icon.png',
-//     },
-//     manifest: '/favicon/site.webmanifest',
-//   }
-// }
+  return {
+    metadataBase: new URL("https://papuaparadisecenter.org"),
+    title: 'Papua Paradise Center',
+    description: current.description,
+    keywords: current.keywords,
+    openGraph: {
+      title: "Papua Paradise Center",
+      description: current.description,
+      url: `https://papuaparadisecenter.org/${lang}`, // Dinamis mengikuti bahasa
+      siteName: "Papua Paradise Center",
+      locale: current.ogLocale,
+      type: "website",
+      images: [
+        {
+          url: "/galeri/galeri21.jpg", // Pakai path relatif dari folder public agar aman
+          width: 1200,
+          height: 630,
+          alt: "Papua Paradise Center",
+        },
+      ],
+    },
+    // ... sisanya (twitter, icons, manifest) sudah oke
+    alternates: {
+      canonical: `/${lang}`,
+      languages: {
+        'id-ID': '/id',
+        'en-US': '/en',
+      },
+    },
+    icons: {
+  icon: [
+    { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+  ],
+  apple: '/favicon/apple-touch-icon.png',
+},
+manifest: '/favicon/site.webmanifest',
+  }
+}
+export async function generateStaticParams() {
+  return [
+    { lang: 'id' },
+    { lang: 'en' }
+  ];
+}
 
 export default function RootLayout({
   
@@ -80,7 +86,7 @@ export default function RootLayout({
   const locale = params?.lang || "en"
   
    return (
-    <html lang={locale === "id" ? "id" : "en"}>
+    <html lang={locale}>
       <head>
        
         <Script async

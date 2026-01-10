@@ -11,39 +11,19 @@ import { notFound } from "next/navigation"
 import { getDictionary } from "@/lib/dictionaries"
 import { i18n, type Locale } from "@/i18n-config"
 
-export const dynamic = "error"
-
-
-// Definisi tipe data sesuai struktur di program-details.json (seperti HeroDict di hero.tsx)
 type ProgramDetailDict = {
-  hero: {
-    title: string;
-    category: string;
-    description: string;
+  hero: { title: string; category: string; description: string };
+  background: { title: string; content: string };
+  activity: { title: string; description: string };
+  benefits: { 
+    title: string; 
+    subtitle: string; 
+    items: { title: string; description: string }[] 
   };
-  background: {
-    title: string;
-    content: string;
-  };
-  activity: {
-    title: string;
-    description: string;
-  };
-  benefits: {
-    title: string;
-    subtitle: string;
-    items: {
-      title: string;
-      description: string;
-    }[];
-  };
-  gallery: {
-    title: string;
-    description: string;
-    imageAlt: string;
-  };
+  gallery: { title: string; description: string; imageAlt: string };
 }
 
+// 1. Generate Static Params agar Build Berhasil
 export async function generateStaticParams() {
   return programsData.flatMap((program) => 
     i18n.locales.map((locale) => ({
@@ -53,130 +33,80 @@ export async function generateStaticParams() {
   )
 }
 
-//tambahkan fungsi metadata dinamis
-// export async function generateMetadata({ params }: { params: { slug: string; lang: Locale } }) {
-//   const program = getProgramBySlug(params.slug)
+// 2. Metadata Dinamis
+export async function generateMetadata({ params }: { params: { slug: string; lang: Locale } }) {
+  const { slug, lang } = params
+  const program = getProgramBySlug(slug)
+  if (!program) return { title: "Program Not Found" }
+
+  return {
+    title: `${program.title} | Papua Paradise Center`,
+    alternates: {
+      languages: {
+        'en': `/en/program/${slug}`,
+        'id': `/id/program/${slug}`,
+      },
+    },
+  }
+}
+
+// 3. Main Page Component
+export default async function ProgramDetailPage({ 
+  params 
+}: { 
+  params: { slug: string; lang: Locale } 
+}) {
+  // Await params untuk keamanan Next.js 14/15
+  const { slug, lang } = params
   
+  const program = getProgramBySlug(slug)
+  const dict = await getDictionary(lang)
 
-//   if (!program) {
-//     return {
-//       title: "Program Not Found",
-//     }
-//   }
-
-//   // Gunakan fallback ke data program jika teks dictionary tidak ditemukan/belum lengkap
-//   const title = program.title || "Program Detail"
-  
-
-//   return {
-//     title: `${title} | Papua Paradise Center`,
-//     description: "Community development program by Papua Paradise Center",
-//     // keywords: [title, programText?.hero?.category || "Program", "Papua Paradise Center", "Papua", "Community Development"],
-//     openGraph: {
-//       title: `${title} | Papua Paradise Center`,
-//       description: "Community development program by Papua Paradise Center",
-//       url: `https://papuaparadisecenter.org/${params.lang}/program/${params.slug}`,
-//       siteName: "Papua Paradise Center",
-//       locale: params.lang === "id" ? "id_ID" : "en_US",
-//       type: "article",
-//       images: [
-//         {
-//           url: program.heroImage,
-//           width: 1200,
-//           height: 630,
-//           alt: title,
-//         },
-//       ],
-//     },
-//     // twitter: {
-//     //   card: "summary_large_image",
-//     //   title: title,
-//     //   description: description.slice(0, 160),
-//     //   images: [program.heroImage],
-//     // },
-//     alternates: {
-//       canonical: `/${params.lang}/program/${params.slug}`,
-//       languages: {
-//         'en': `/en/program/${params.slug}`,
-//         'id': `/id/program/${params.slug}`,
-//       },
-//     },
-//   }
-// }
-
-
-export default async function ProgramDetailPage({ params }: { params: { slug: string; lang: Locale } }) {
-  const program = getProgramBySlug(params.slug)
-  const dict = await getDictionary(params.lang)
-  const programText = dict.programDetails?.[params.slug as keyof typeof dict.programDetails] as ProgramDetailDict | undefined
+  // Safety check: Pastikan data dictionary tersedia
+  const programText = dict.programDetails?.[slug as keyof typeof dict.programDetails] as ProgramDetailDict | undefined
 
   if (!program) {
     notFound()
   }
 
-  // Fallback values untuk mencegah error jika dictionary belum lengkap
-  const heroTitle = programText?.hero?.title || ""
+  const heroTitle = programText?.hero?.title || program.title || ""
   const heroDescription = programText?.hero?.description || ""
 
-  // Schema Markup untuk SEO agar Google mengenali ini sebagai Program/Layanan
-  // Schema Markup (SAFE for build & JSON.stringify)
-// const jsonLd = {
-//   "@context": "https://schema.org",
-//   "@type": "Service",
-//   name: heroTitle || "Program",
-//   description: heroDescription || "Community development program",
-//   provider: {
-//     "@type": "Organization",
-//     name: "Papua Paradise Center",
-//     url: "https://papuaparadisecenter.org",
-//   },
-//   image: program?.heroImage
-//     ? [`https://papuaparadisecenter.org${program.heroImage}`]
-//     : [],
-//   url: `https://papuaparadisecenter.org/${params.lang}/program/${params.slug}`,
-// }
-
-
-  // Menggabungkan data gambar dari program-data.ts dengan alt text dari json
-  const galleryImages = program.galleryImages
-  ? program.galleryImages.map((img) => ({
-      src: img.src,
-      alt: programText?.gallery?.imageAlt || heroTitle
-    }))
-  : []
-
+  const galleryImages = (program.galleryImages || []).map((img) => ({
+    src: img.src,
+    alt: programText?.gallery?.imageAlt || heroTitle
+  }))
 
   return (
     <main className="min-h-screen">
-      {/* <script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: (() => {
-      try {
-        return JSON.stringify(jsonLd)
-      } catch {
-        return ""
-      }
-    })(),
-  }}
-/> */}
-
       <Navigation />
+      
       <ProgramHero
         title={heroTitle}
         category={programText?.hero?.category || "Program"}
         description={heroDescription}
         backgroundImage={program.heroImage}
       />
-      <Background title={programText?.background?.title || ""} content={programText?.background?.content || ""} />
-      <Activity title={programText?.activity?.title || ""} description={programText?.activity?.description || ""} image={program.activityImage} />
+
+      <Background 
+        title={programText?.background?.title || ""} 
+        content={programText?.background?.content || ""} 
+      />
+
+      <Activity 
+        title={programText?.activity?.title || ""} 
+        description={programText?.activity?.description || ""} 
+        image={program.activityImage} 
+      />
       
-      {/* Render Benefits hanya jika data tersedia di dictionary */}
       {programText?.benefits && (
-        <Benefits title={programText.benefits.title} subtitle={programText.benefits.subtitle} items={programText.benefits.items} />
+        <Benefits 
+          title={programText.benefits.title} 
+          subtitle={programText.benefits.subtitle} 
+          items={programText.benefits.items || []} 
+        />
       )}
       
-      {/* Gallery component might need refactoring to accept title/desc from dict if needed, currently passing images only */}
       {programText?.gallery && (
         <Gallery 
           title={programText.gallery.title}
@@ -184,8 +114,10 @@ export default async function ProgramDetailPage({ params }: { params: { slug: st
           images={galleryImages}
         /> 
       )}
-      {dict.common.cta && <CTA dict={dict.common.cta} />}
-      {dict.common.footer && <Footer dict={dict.common.footer} />}
+
+      {/* Gunakan optional chaining agar tidak error saat build jika key belum ada */}
+      {dict.common?.cta && <CTA dict={dict.common.cta} />}
+      {dict.common?.footer && <Footer dict={dict.common.footer} />}
     </main>
   )
 }
