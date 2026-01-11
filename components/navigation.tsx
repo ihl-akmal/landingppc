@@ -6,8 +6,9 @@ import { Menu, X, ChevronDown, ChevronUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { programsData } from "@/lib/program-data"
+import LanguageSwitcher from "@/components/language-switcher"
 
-export function Navigation() {
+export function Navigation({ dict, lang }: { dict: any, lang: string }) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isProgramsOpen, setIsProgramsOpen] = useState(false) // mobile submenu toggle
@@ -32,17 +33,18 @@ export function Navigation() {
         <div className="flex items-center justify-between h-20">
           {/* Logo -> go to homepage */}
           <Link
-            href="/"
+            href={`/${lang}`}
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <Image src="/logo-ppc.svg" alt="Logo Papua Paradise Center" width={250} height={250} className="h-16 w-16" />
           </Link>
+          
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
             <Link
-              href="/"
+              href={`/${lang}`}
               className={`font-medium hover:text-primary transition-colors ${
                 isScrolled ? "text-foreground" : "text-background"
               }`}
@@ -53,13 +55,13 @@ export function Navigation() {
             <div
               className="relative"
               onMouseEnter={() => {
-    if (desktopDropdownTimeout) clearTimeout(desktopDropdownTimeout)
-    setIsDesktopProgramsOpen(true)
-  }}
-  onMouseLeave={() => {
-    const timeout = setTimeout(() => setIsDesktopProgramsOpen(false), 150)
-    setDesktopDropdownTimeout(timeout)
-  }}
+                  if (desktopDropdownTimeout) clearTimeout(desktopDropdownTimeout)
+                  setIsDesktopProgramsOpen(true)
+                }}
+                onMouseLeave={() => {
+                  const timeout = setTimeout(() => setIsDesktopProgramsOpen(false), 150)
+                  setDesktopDropdownTimeout(timeout)
+                }}
             >
               <button
                 type="button"
@@ -81,7 +83,7 @@ export function Navigation() {
                   {programsData.map((program) => (
                     <Link
                       key={program.id}
-                      href={`/program/${program.slug}`}
+                      href={`/${lang}/program/${program.slug}`}
                       className="block px-4 py-2 text-sm hover:bg-muted/60"
                       onClick={() => setIsDesktopProgramsOpen(false)}
                     >
@@ -91,6 +93,8 @@ export function Navigation() {
                 </div>
               </div>
             </div>
+            {/* Pasang switchernya di sini */}
+          <LanguageSwitcher />
           </div>
 
           {/* Mobile Menu Button */}
@@ -115,7 +119,7 @@ export function Navigation() {
           <div className="container mx-auto px-4 py-4">
             <div className="flex flex-col gap-4">
               <Link
-                href="/"
+                href={`/${lang}`}
                 className="text-left font-medium hover:text-primary transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -135,7 +139,7 @@ export function Navigation() {
                     {programsData.map((program) => (
                       <Link
                         key={program.id}
-                        href={`/program/${program.slug}`}
+                        href={`/${lang}/program/${program.slug}`}
                         className="text-left text-sm hover:text-primary transition-colors py-1"
                         onClick={() => {
                           setIsMobileMenuOpen(false)
@@ -148,10 +152,14 @@ export function Navigation() {
                   </div>
                 )}
               </div>
+              {/* Pasang switchernya di sini */}
+              <LanguageSwitcher />
             </div>
           </div>
         </div>
       )}
+      
+      
     </nav>
   )
 }

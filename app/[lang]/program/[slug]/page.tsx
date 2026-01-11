@@ -79,7 +79,7 @@ export default async function ProgramDetailPage({
 
   return (
     <main className="min-h-screen">
-      <Navigation />
+      <Navigation dict={dict.common.nav} lang={params.lang} />
       
       <ProgramHero
         title={heroTitle}

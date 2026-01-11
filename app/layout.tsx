@@ -58,15 +58,15 @@ export async function generateMetadata({ params }: { params: { lang: string } })
       },
     },
     icons: {
-  icon: [
-    { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-    { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-  ],
-  apple: '/favicon/apple-touch-icon.png',
-},
-manifest: '/favicon/site.webmanifest',
-  }
-}
+        icon: [
+          { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+          { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+        ],
+        apple: '/favicon/apple-touch-icon.png',
+      },
+      manifest: '/favicon/site.webmanifest',
+        }
+      }
 export async function generateStaticParams() {
   return [
     { lang: 'id' },
@@ -109,6 +109,7 @@ export default function RootLayout({
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "Papua Paradise Center",
+            "alternateName": ["PPC", "Papua Paradise"],
             "url": "https://papuaparadisecenter.org",
             "logo": "https://papuaparadisecenter.org/logo.png"
           })}

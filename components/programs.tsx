@@ -1,27 +1,12 @@
 import { GraduationCap, HeartPulse, Briefcase } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { getProgramBySlug, programsData } from "@/lib/program-data"
+import { getDictionary } from "@/lib/dictionaries";
 
 // Static assets that don't need translation
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-const PROGRAMS_DATA = [
-  {
-    icon: GraduationCap,
-    image: `${basePath}/galeri/galeri4.jpg`,
-    slug: "pendidikan-kontekstual",
-  },
-  {
-    icon: HeartPulse,
-    image: `${basePath}/galeri/galeri26.jpg`,
-    slug: "ekonomi-kerakyatan",
-  },
-  {
-    icon: Briefcase,
-    image: `${basePath}/galeri/galeri18.jpg`,
-    slug: "hutan-adat-lingkungan",
-  },
-  
-]
+
 
 type ProgramsDict = {
   title: string;
@@ -34,7 +19,9 @@ type ProgramsDict = {
 }
 
 
-export function Programs({ dict }: { dict: ProgramsDict }) {
+export async function Programs({ dict, lang }: { dict: any, lang: string }) {
+  
+  
   return (
     <section id="program" className="py-20 md:py-28 bg-secondary">
       <div className="container mx-auto px-4">
@@ -46,10 +33,13 @@ export function Programs({ dict }: { dict: ProgramsDict }) {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {PROGRAMS_DATA.map((program, index) => {
-  const item = dict.items?.[index]
+          {programsData.map((program, index) => {
+          // 2. Ambil aset berdasarkan slug program yang aktif
+         const Icon = program.icon;
+        const image = program.heroImage; 
+          const item = dict.items?.[index];
 
-  if (!item) return null // ⛑️ SSG safety
+          if (!item) return null // ⛑️ SSG safety
 
   return (
     <div
@@ -58,7 +48,7 @@ export function Programs({ dict }: { dict: ProgramsDict }) {
     >
       <div className="relative h-48 overflow-hidden">
         <img
-          src={program.image || "/placeholder.svg"}
+          src={program.heroImage || "/placeholder.svg"}
           alt={item.title}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
@@ -66,7 +56,7 @@ export function Programs({ dict }: { dict: ProgramsDict }) {
 
       <div className="p-6 flex flex-col flex-1">
         <div className="inline-flex items-center justify-center w-12 h-12 bg-primary mb-4">
-          <program.icon className="h-6 w-6 text-primary-foreground" />
+          {Icon && <Icon className="h-6 w-6 text-primary-foreground" />}
         </div>
 
         <h3 className="text-xl font-bold mb-3">
@@ -77,7 +67,7 @@ export function Programs({ dict }: { dict: ProgramsDict }) {
           {item.description}
         </p>
 
-        <Link href={`/program/${program.slug}`}>
+        <Link href={`/${lang}/program/${program.slug}`}>
           <Button className="bg-primary text-primary-foreground hover:bg-primary/90 w-full text-sm">
             {dict.cta}
           </Button>

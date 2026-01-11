@@ -38,12 +38,12 @@ export function Footer({ dict }: { dict: FooterDict }) {
 
           {/* Contact */}
           <div>
-            <h4 className="text-xl font-semibold mb-4">Kontak</h4>
+            <h4 className="text-xl font-semibold mb-4">{dict.contactTitle}</h4>
             <div className="space-y-3 text-background/80">
               <div className="flex items-start gap-3">
                 <Mail className="h-5 w-5 mt-0.5 flex-shrink-0" />
                 <a href="mailto:info@harapanbersama.org" className="hover:text-background transition-colors">
-                  info@papuaparadisecenter.org
+                  marthenayub03@gmail.com
                 </a>
               </div>
               <div className="flex items-start gap-3">
@@ -120,7 +120,7 @@ export function Footer({ dict }: { dict: FooterDict }) {
         </div>
 
         <div className="border-t border-background/20 pt-8 text-center text-background/60">
-          <p>&copy; 2025 Papua Paradise Center. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Papua Paradise Center. Designed by <a href="https://ihlasulamal-web-portfolio.vercel.app/" target="_blank" className="hover:text-background transition-colors"><u>Ihlasul A'mal</u></a>. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -25,6 +25,7 @@ export type DetailedProgram = {
   id: string  
   slug: string
   title: string
+  updatedAt?: string;
   icon: any
   heroImage: string
   backgroundImage: string
