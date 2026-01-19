@@ -68,7 +68,7 @@ export function About({ dict }: { dict: AboutDict }) {
                 className="relative h-full overflow-hidden"
                 style={{ clipPath: "polygon(8% 0, 100% 0, 100% 92%, 0 100%, 0 8%)" }}
               >
-                <Image src="/galeri/galeri11.jpg" alt="CEO Papua Paradise Center" fill className="object-cover"/>
+                <Image src="/galeri/ceo-ppc.jpeg" alt="CEO Papua Paradise Center" fill className="object-cover"/>
               </div>
 
               {/* Modern floating text with green background */}
